@@ -4,8 +4,8 @@ public class Aluno extends Disciplina{
     private String nome;
     private int matricula;
     private String cursoDeGraduação;
-    private ArrayList<String> turmasMatriculadas;
-    private ArrayList<String> disciplinasFeitas;
+    private ArrayList<String> turmasMatriculadas = new ArrayList<String>();
+    private ArrayList<String> disciplinasFeitas = new ArrayList<String>();
 
     
     public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas) {
@@ -37,8 +37,14 @@ public class Aluno extends Disciplina{
 
     public void fazerMatrícula(){
         System.out.format("Fazer matrícula em %s", Disciplina.nomeDisciplina);
+        turmasMatriculadas.add(nomeDisciplna);
     }
     public void trancarMatrícula(){
         System.out.format("Trancar matrícula em %s", Disciplina.nomeDisciplina);
+        turmasMatriculadas.remove(nomeDisciplina);
+    }
+    public void trancarSemestre(){
+        turmasMatriculadas.clear();
+        System.out.println("Trancamento do semestre realizado com sucesso");
     }
 }

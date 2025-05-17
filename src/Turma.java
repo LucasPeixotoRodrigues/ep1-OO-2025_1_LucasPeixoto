@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+
 public class Turma {
-    private String professorResponsável;
-    private int semestre;
-    private char formaDeAvaliação;
-    private boolean presencial;
-    private String sala;
-    private String horário;
-    private int capacidadeMáximaDeAlunos;
+    protected String professorResponsável;
+    protected int semestre;
+    protected char formaDeAvaliação;
+    protected boolean presencial;
+    protected String sala;
+    protected String horário;
+    protected int capacidadeMáximaDeAlunos;
+    protected ArrayList<String> alunosNaTurma = new ArrayList<String>();
 
     public void setTurma(String professorResponsável, int semestre, char formaDeAvaliação, boolean presencial, String sala, String horário, int capacidadeMáximaDeAlunos){
         this.professorResponsável = professorResponsável;
