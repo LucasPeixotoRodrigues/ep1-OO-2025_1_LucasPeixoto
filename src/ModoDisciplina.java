@@ -46,9 +46,9 @@ public class ModoDisciplina {
         System.out.println("Turma: " + nomeTurma);
         System.out.println("Professor: " + nomeProfessor);
         System.out.println("Semestre: " + semestre);
-        System.out.println("Forma de Avaliação: " + formaDeAvaliacao);
+        System.out.println("Forma de avaliação: " + formaDeAvaliacao);
         System.out.println("Modelo de ensino: " + modeloDeEnsino);
-        System.out.println("Horário da Turma: " + horario);
+        System.out.println("Horário da aula: " + horario);
     }
     
 }

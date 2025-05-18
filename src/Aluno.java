@@ -1,13 +1,13 @@
 import java.util.ArrayList;
-
+import java.util.Scanner;
 public class Aluno extends Disciplina{
     protected String nome;
     protected int matricula;
     protected String cursoDeGraduação;
     protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
+    Scanner scanner = new Scanner (System.in);
 
-    
     public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas) {
         this.turmasMatriculadas = turmasMatriculadas;
     }
@@ -36,15 +36,29 @@ public class Aluno extends Disciplina{
     }
 
     public void fazerMatrícula(){
-        System.out.format("Fazer matrícula em %s", Disciplina.nomeDisciplina);
+        System.out.print("Fazer matrícula em:");
+        String nomeDisciplina = scanner.nextLine();
         turmasMatriculadas.add(nomeDisciplna);
+        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
     }
     public void trancarMatrícula(){
-        System.out.format("Trancar matrícula em %s", Disciplina.nomeDisciplina);
-        turmasMatriculadas.remove(nomeDisciplina);
+        System.out.print("Trancar matrícula em:");
+        String nomeDisciplina = scanner.nextLine();
+        turmasMatriculadas.remove(nomeDisciplna);
+        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
     }
     public void trancarSemestre(){
-        turmasMatriculadas.clear();
-        System.out.println("Trancamento do semestre realizado com sucesso");
+        System.out.print("Deseja trancar semestre? (s/n):");
+        char resposta = scanner.next().charAt(0);
+        if (resposta == 's' || resposta == 'S') {
+            turmasMatriculadas.clear();
+            System.out.println("Trancamento do semestre realizado com sucesso");
+        }
+        else if (resposta == 'n' || resposta == 'N') {
+            System.out.print("Trancamneto do semstre não realizado");
+        }
+        else {
+            System.out.print("Opção inválida");
+        }
     }
 }

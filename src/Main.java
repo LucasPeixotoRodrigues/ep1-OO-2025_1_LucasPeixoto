@@ -5,18 +5,51 @@ public class Main {
     static ModoAluno modoAluno = new ModoAluno();
     static ModoDisciplina modoDisciplina = new ModoDisciplina();
     static ModoAvaliacao modoAvaliacao = new ModoAvaliacao();
+    static Aluno aluno = new Aluno();
+    static AlunoEspecial alunoEspecial = new AlunoEspecial();
+    static Disciplina disiplina = new Disciplina();
+    static Avaliacao avaliacao = new Avaliacao();
+    static Turma turma = new Turma();
     public static void main(String[] args) throws Exception {
         while (true) {
             System.out.println("Escolha uma opção:");
-            System.out.println("1. Cadastrar Aluno");
-            System.out.println("2. Cadastrar Disciplina");
-            System.out.println("3. Lançar Nota");
+            System.out.println("1. Modo Aluno");
+            System.out.println("2. Modo Disciplina");
+            System.out.println("3. Modo Avaliação");
             System.out.println("4. Sair");
             Scanner scanner = new Scanner(System.in);
             int opcao = scanner.nextInt();
             switch (opcao) {
                 case 1:
-                    modoAluno.cadastrarAluno();
+                    System.out.println("O que deseja fazer?");
+                    System.out.println("1. Cadastrar aluno");
+                    System.out.println("2. Fazer matrícula em disciplina");
+                    System.out.println("3. Trancar matríula em disciplina");
+                    System.out.println("4. Trancar semestre");
+                    int opcaoAluno = scanner.nextInt();
+                    switch(opcaoAluno) {
+                        case 1:
+                            modoAluno.cadastrarAluno();
+                        case 2:
+                            System.out.println("Informe o tipo de aluno (1 - Aluno regular, 2 - Aluno especial):");
+                            int tipoAluno = scanner.nextInt();
+                            if (tipoAluno == 1) {
+                                aluno.fazerMatrícula();
+                            } else if (tipoAluno == 2) {
+                                alunoEspecial.fazerMatrícula();
+                            } else {
+                                System.out.println("Tipo de aluno inválido.");
+                            }
+                            break;
+                        case 3:
+                            aluno.trancarMatrícula();
+                            break;
+                        case 4:
+                            aluno.trancarSemestre();
+                            break;
+                        default:
+                            System.out.println("Opção inválida.");
+                    }
                     break;
                 case 2:
                     modoDisciplina.cadastrarDisciplina();
