@@ -10,7 +10,7 @@ public class ModoDisciplina {
         String nome = scanner.nextLine();
         System.out.print("Digite o código da disciplina: ");
         String codigo = scanner.nextLine();
-        System.out.print("Digite a carga horária da disciplina: ");
+        System.out.print("Digite a carga horária da disciplina (número de horas): ");
         int cargaHoraria = scanner.nextInt();
         scanner.nextLine();
         System.out.print("Digite os pré-requisitos da disciplina (separe por vírgula): ");
