@@ -2,7 +2,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class ModoDisciplina {
+
     Scanner scanner = new Scanner(System.in);
+    
     public void cadastrarDisciplina() {
         System.out.print("Digite o nome da disciplina: ");
         String nome = scanner.nextLine();
@@ -31,16 +33,21 @@ public class ModoDisciplina {
         String nomeTurma = scanner.nextLine();
         System.out.print("Digite o nome do professor:");
         String nomeProfessor = scanner.nextLine();
-        System.out.print("Digite o código da turma: ");
-        String codigoTurma = scanner.nextLine();
-        System.out.print("Digite ")
+        System.out.print("Digite o semestre: ");
+        int semestre = scanner.nextInt();
+        System.out.print("Digite o forma de avaliação: ");
+        String formaDeAvaliacao = scanner.nextLine();
+        System.out.print("Digite o modelo de ensino (remoto ou presencial): ");
+        String modeloDeEnsino = scanner.nextLine();
         System.out.print("Digite o horário da turma: ");
         String horario = scanner.nextLine();
 
         System.out.println("Turma cadastrada com sucesso!");
         System.out.println("Turma: " + nomeTurma);
         System.out.println("Professor: " + nomeProfessor);
-        System.out.println("Código da Turma: " + codigoTurma);
+        System.out.println("Semestre: " + semestre);
+        System.out.println("Forma de Avaliação: " + formaDeAvaliacao);
+        System.out.println("Modelo de ensino: " + modeloDeEnsino);
         System.out.println("Horário da Turma: " + horario);
     }
     

@@ -1,32 +1,13 @@
 import java.util.ArrayList;
 
-public class Aluno extends Disciplina{
-    protected String nome;
-    protected int matricula;
-    protected String cursoDeGraduação;
+public class AlunoEspecial extends Aluno {
     protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
 
     
-    public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas) {
+    public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas) {
         this.turmasMatriculadas = turmasMatriculadas;
-    }
-    public void setDisciplinasFeitas(ArrayList<String> disciplinasFeitas) {
         this.disciplinasFeitas = disciplinasFeitas;
-    }
-    public void setAluno(String nome, int matricula, String cursoDeGraduação){
-        this.nome = nome;
-        this.matricula = matricula;
-        this.cursoDeGraduação = cursoDeGraduação;
-    }
-    public String getNome(){
-        return nome;
-    }
-    public int getMatricula() {
-        return matricula;
-    }
-        public String getCursoDeGraduação() {
-        return cursoDeGraduação;
     }
     public ArrayList<String> getTurmasMatriculadas() {
         return turmasMatriculadas;
@@ -36,8 +17,13 @@ public class Aluno extends Disciplina{
     }
 
     public void fazerMatrícula(){
-        System.out.format("Fazer matrícula em %s", Disciplina.nomeDisciplina);
-        turmasMatriculadas.add(nomeDisciplna);
+        if (turmasMatriculadas.size() < 3) {
+            System.out.format("Fazer matrícula em %s", Disciplina.nomeDisciplina);
+            turmasMatriculadas.add(nomeDisciplna);
+        } 
+        else {
+            System.out.println("Limite de disciplinas atingido");
+        }
     }
     public void trancarMatrícula(){
         System.out.format("Trancar matrícula em %s", Disciplina.nomeDisciplina);
