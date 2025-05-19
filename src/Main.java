@@ -52,6 +52,7 @@ public class Main {
                     }
                     break;
                 case 2:
+                
                     modoDisciplina.cadastrarDisciplina();
                     break;
                 case 3:

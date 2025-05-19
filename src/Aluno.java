@@ -8,16 +8,13 @@ public class Aluno extends Disciplina{
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
     Scanner scanner = new Scanner (System.in);
 
-    public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas) {
-        this.turmasMatriculadas = turmasMatriculadas;
-    }
-    public void setDisciplinasFeitas(ArrayList<String> disciplinasFeitas) {
-        this.disciplinasFeitas = disciplinasFeitas;
-    }
-    public void setAluno(String nome, int matricula, String cursoDeGraduação){
+    
+    public void setAluno(String nome, int matricula, String cursoDeGraduação, ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas){
         this.nome = nome;
         this.matricula = matricula;
         this.cursoDeGraduação = cursoDeGraduação;
+        this.turmasMatriculadas = turmasMatriculadas;
+        this.disciplinasFeitas = disciplinasFeitas;
     }
     public String getNome(){
         return nome;
