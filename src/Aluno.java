@@ -7,7 +7,7 @@ public class Aluno extends Disciplina{
     protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
     Scanner scanner = new Scanner (System.in);
-
+    Disciplina disciplina = new Disciplina();
     
     public void setAluno(String nome, int matricula, String cursoDeGraduação, ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas){
         this.nome = nome;
@@ -32,11 +32,30 @@ public class Aluno extends Disciplina{
         return disciplinasFeitas;
     }
 
-    public void fazerMatrícula(){
+    public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
         System.out.print("Fazer matrícula em:");
         String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.add(nomeDisciplna);
-        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+        Disciplina disciplinaSelecionada = null;
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+                disciplinaSelecionada = disciplina;
+                break;
+            }
+        }
+        ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
+        boolean possuiTodosPreRequisitos = true;
+        for (String pre : preRequisitos) {
+            if (!disciplinasFeitas.contains(pre)) {
+                possuiTodosPreRequisitos = false;
+                break;
+            }
+        }
+        if (possuiTodosPreRequisitos) {
+            turmasMatriculadas.add(nomeDisciplina);
+            System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+        } else {
+            System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
+        }
     }
     public void trancarMatrícula(){
         System.out.print("Trancar matrícula em:");

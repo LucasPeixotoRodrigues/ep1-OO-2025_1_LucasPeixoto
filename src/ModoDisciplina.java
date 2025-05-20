@@ -37,7 +37,9 @@ public class ModoDisciplina {
                 preRequisitos.add(prereq.trim());
             }
         }
-
+        Disciplina novaDisciplina = new Disciplina();
+        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos);
+        disciplinas.add(novaDisciplina);
         System.out.println("Disciplina cadastrada com sucesso!");
         System.out.println("Nome: " + nome);
         System.out.println("Código: " + codigo);

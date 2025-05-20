@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,8 @@ public class Main {
     static Disciplina disiplina = new Disciplina();
     static Avaliacao avaliacao = new Avaliacao();
     static Turma turma = new Turma();
+    protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
+    protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
     public static void main(String[] args) throws Exception {
         while (true) {
             System.out.println("Escolha uma opção:");
@@ -34,7 +37,7 @@ public class Main {
                             System.out.println("Informe o tipo de aluno (1 - Aluno regular, 2 - Aluno especial):");
                             int tipoAluno = scanner.nextInt();
                             if (tipoAluno == 1) {
-                                aluno.fazerMatrícula();
+                                aluno.fazerMatricula(ArrayList<Disciplina> disciplinas);
                             } else if (tipoAluno == 2) {
                                 alunoEspecial.fazerMatrícula();
                             } else {

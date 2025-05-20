@@ -12,8 +12,9 @@ public class Disciplina {
         this.código = código;
         this.cargaHorária = cargaHorária;
         this.préRequisitos = préRequisitos;
+
     }
-        public String getNomeDisciplna() {
+        public String getNomeDisciplina() {
         return nomeDisciplna;
     }
         public String getCódigo() {
@@ -25,5 +26,5 @@ public class Disciplina {
     public ArrayList<String> getPréRequisitos(){
         return préRequisitos;
     }
-    
+
 }
