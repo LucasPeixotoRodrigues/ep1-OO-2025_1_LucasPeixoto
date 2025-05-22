@@ -6,6 +6,7 @@ public class Aluno extends Disciplina{
     protected String cursoDeGraduação;
     protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
+    protected ArrayList<String> matriculas = new ArrayList<String>();
     Scanner scanner = new Scanner (System.in);
     Disciplina disciplina = new Disciplina();
     
