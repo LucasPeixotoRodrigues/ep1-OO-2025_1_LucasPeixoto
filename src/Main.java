@@ -29,10 +29,13 @@ public class Main {
                     System.out.println("2. Fazer matrícula em disciplina");
                     System.out.println("3. Trancar matríula em disciplina");
                     System.out.println("4. Trancar semestre");
+                    System.out.println("5. Voltar");
                     int opcaoAluno = scanner.nextInt();
                     switch(opcaoAluno) {
                         case 1:
                             modoAluno.cadastrarAluno();
+                            scanner.close();
+                            return;
                         case 2:
                             System.out.println("Informe o tipo de aluno (1 - Aluno regular, 2 - Aluno especial):");
                             int tipoAluno = scanner.nextInt();
@@ -43,17 +46,23 @@ public class Main {
                             } else {
                                 System.out.println("Tipo de aluno inválido.");
                             }
-                            break;
+                            scanner.close();
+                            return;
                         case 3:
                             aluno.trancarMatrícula();
-                            break;
+                            scanner.close();
+                            return;
                         case 4:
                             aluno.trancarSemestre();
+                            scanner.close();
+                            return;
+                        case 5:
                             break;
                         default:
                             System.out.println("Opção inválida.");
                     }
-                    break;
+                    scanner.close();
+                    return;
                 case 2:
                 
                     modoDisciplina.cadastrarDisciplina();

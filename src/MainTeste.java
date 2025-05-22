@@ -7,8 +7,10 @@ public class MainTeste {
         AlunoEspecial alunoEspecial = new AlunoEspecial();
         ModoDisciplina modoDisciplina = new ModoDisciplina();
         modoAluno.cadastrarAluno();
-        //modoDisciplina.cadastrarDisciplina();
+        //aluno.fazerMatricula(modoDisciplina.disciplinas);
         //System.out.println(disciplinas);
         //aluno.fazerMatricula(new ArrayList<Disciplina>());
+        //modoAluno.cadastrarAluno();
+        modoAluno.listarAlunos();
     }
 }

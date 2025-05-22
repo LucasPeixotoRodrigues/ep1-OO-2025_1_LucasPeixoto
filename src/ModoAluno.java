@@ -33,6 +33,7 @@ public class ModoAluno extends Aluno{
                 }
             }
         } while (matriculaExistente);
+        matriculas.add(matricula);
         System.out.print("Digite o curso do aluno: ");
         String curso = scanner.nextLine();
         System.out.println("Informe o tipo de aluno:");
@@ -55,6 +56,13 @@ public class ModoAluno extends Aluno{
                 System.out.println("Tipo de aluno inválido. Tente novamente.");
                 tipoAluno = scanner.nextInt();
             }
+        }
+        }
+
+    public void listarAlunos() {
+        System.out.println("Lista de alunos cadastrados:" );
+        for (String matricula : matriculas) {
+            System.out.println(matricula);
         }
     }
 }

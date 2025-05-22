@@ -69,5 +69,5 @@ public class ModoDisciplina {
         System.out.println("Modelo de ensino: " + modeloDeEnsino);
         System.out.println("Horário da aula: " + horario);
     }
-    
+
 }
