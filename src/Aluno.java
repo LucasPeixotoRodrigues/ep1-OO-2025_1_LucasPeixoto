@@ -32,50 +32,49 @@ public class Aluno extends Disciplina{
         public ArrayList<String> getDisciplinasFeitas() {
         return disciplinasFeitas;
     }
-
-    public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
-        System.out.print("Fazer matrícula em:");
-        String nomeDisciplina = scanner.nextLine();
-        Disciplina disciplinaSelecionada = null;
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
-                disciplinaSelecionada = disciplina;
-                break;
-            }
-        }
-        ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
-        boolean possuiTodosPreRequisitos = true;
-        for (String pre : preRequisitos) {
-            if (!disciplinasFeitas.contains(pre)) {
-                possuiTodosPreRequisitos = false;
-                break;
-            }
-        }
-        if (possuiTodosPreRequisitos) {
-            turmasMatriculadas.add(nomeDisciplina);
-            System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
-        } else {
-            System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
-        }
-    }
-    public void trancarMatrícula(){
-        System.out.print("Trancar matrícula em:");
-        String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.remove(nomeDisciplna);
-        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
-    }
-    public void trancarSemestre(){
-        System.out.print("Deseja trancar semestre? (s/n):");
-        char resposta = scanner.next().charAt(0);
-        if (resposta == 's' || resposta == 'S') {
-            turmasMatriculadas.clear();
-            System.out.println("Trancamento do semestre realizado com sucesso");
-        }
-        else if (resposta == 'n' || resposta == 'N') {
-            System.out.print("Trancamneto do semstre não realizado");
-        }
-        else {
-            System.out.print("Opção inválida");
-        }
-    }
+    //public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
+        //System.out.print("Fazer matrícula em:");
+        //String nomeDisciplina = scanner.nextLine();
+        //Disciplina disciplinaSelecionada = null;
+        //for (Disciplina disciplina : disciplinas) {
+            //if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+                //disciplinaSelecionada = disciplina;
+                //break;
+            //}
+        //}
+        //ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
+        //boolean possuiTodosPreRequisitos = true;
+        //for (String pre : preRequisitos) {
+            //if (!disciplinasFeitas.contains(pre)) {
+                //possuiTodosPreRequisitos = false;
+                //break;
+            //}
+        //}
+        //if (possuiTodosPreRequisitos) {
+            //turmasMatriculadas.add(nomeDisciplina);
+            //System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+        //} else {
+            //System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
+        //}
+    //}
+    //public void trancarMatrícula(){
+        //System.out.print("Trancar matrícula em:");
+        //String nomeDisciplina = scanner.nextLine();
+        //turmasMatriculadas.remove(nomeDisciplna);
+        //System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+    //}
+    //public void trancarSemestre(){
+        //System.out.print("Deseja trancar semestre? (s/n):");
+        //char resposta = scanner.next().charAt(0);
+        //if (resposta == 's' || resposta == 'S') {
+            //turmasMatriculadas.clear();
+            //System.out.println("Trancamento do semestre realizado com sucesso");
+        //}
+        //else if (resposta == 'n' || resposta == 'N') {
+            //System.out.print("Trancamneto do semstre não realizado");
+        //}
+        //else {
+            //System.out.print("Opção inválida");
+        //}
+    //}
 }

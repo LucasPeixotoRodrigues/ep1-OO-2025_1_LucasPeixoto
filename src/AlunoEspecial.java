@@ -15,7 +15,7 @@ public class AlunoEspecial extends Aluno {
         public ArrayList<String> getDisciplinasFeitas() {
         return disciplinasFeitas;
     }
-
+    
     public void fazerMatrícula(){
         if (turmasMatriculadas.size() < 3) {
             System.out.print("Fazer matrícula em:");

@@ -40,7 +40,7 @@ public class Main {
                             System.out.println("Informe o tipo de aluno (1 - Aluno regular, 2 - Aluno especial):");
                             int tipoAluno = scanner.nextInt();
                             if (tipoAluno == 1) {
-                                aluno.fazerMatricula(modoDisciplina.disciplinas);
+                                modoAluno.fazerMatricula(modoDisciplina.disciplinas);
                             } else if (tipoAluno == 2) {
                                 alunoEspecial.fazerMatrícula();
                             } else {
@@ -49,11 +49,11 @@ public class Main {
                             scanner.close();
                             return;
                         case 3:
-                            aluno.trancarMatrícula();
+                            modoAluno.trancarMatrícula();
                             scanner.close();
                             return;
                         case 4:
-                            aluno.trancarSemestre();
+                            modoAluno.trancarSemestre();
                             scanner.close();
                             return;
                         case 5:
