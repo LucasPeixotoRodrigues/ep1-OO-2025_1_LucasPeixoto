@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class Turma {
+public class Turma extends Disciplina{
+    protected String nomeDisciplina;
     protected String professorResponsável;
     protected int semestre;
     protected char formaDeAvaliacao;

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModoAluno extends Aluno{
-    
+
     public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
         System.out.print("Fazer matrícula em:");
         String nomeDisciplina = scanner.nextLine();
@@ -43,7 +43,7 @@ public class ModoAluno extends Aluno{
             System.out.println("Trancamento do semestre realizado com sucesso");
         }
         else if (resposta == 'n' || resposta == 'N') {
-            System.out.print("Trancamneto do semstre não realizado");
+            System.out.print("Trancamento do semstre não realizado");
         }
         else {
             System.out.print("Opção inválida");
@@ -54,7 +54,7 @@ public class ModoAluno extends Aluno{
 
     boolean matriculaExistente = false;
     public void cadastrarAluno() {
-        System.out.print("Digite o nome do aluno: ");
+        System.out.println("Digite o nome do aluno: ");
         String nome = scanner.nextLine();
         System.out.print("Digite a matrícula do aluno: ");
         String matricula = scanner.nextLine();
@@ -66,7 +66,7 @@ public class ModoAluno extends Aluno{
             }
         }
         if (!matricula.matches("[0-9]+")) {
-            System.out.println("Matrícula inválida. A matrícula deve conter apenas dígitos.");
+            System.out.println("Matrícula inválida. A matrícula deve conter apenas números.");
             System.out.println("Digite a matrícula: ");
             matricula = scanner.nextLine();
         }
@@ -81,9 +81,19 @@ public class ModoAluno extends Aluno{
                 }
             }
         } while (matriculaExistente);
+        alunos.add(nome);
         matriculas.add(matricula);
         System.out.print("Digite o curso do aluno: ");
         String curso = scanner.nextLine();
+        System.out.println("Quais disciplinas o aluno já fez? (Separe por vírgula) ");
+        ArrayList<String> disciplinasFeitas = new ArrayList<>();
+        String disciplinasInput = scanner.nextLine();
+        if (!disciplinasInput.trim().isEmpty()) {
+            for (String disciplina : disciplinasInput.split(",")) {
+                disciplinasFeitas.add(disciplina.trim());
+            }
+        }
+        
         System.out.println("Informe o tipo de aluno:");
         System.out.println("1. Aluno Regular");
         System.out.println("2. Aluno Especial");
@@ -93,6 +103,7 @@ public class ModoAluno extends Aluno{
         System.out.println("Nome: " + nome);
         System.out.println("Matrícula: " + matricula);
         System.out.println("Curso: " + curso);
+        System.out.println("Disciplinas feitas: " + disciplinasFeitas);
         if (tipoAluno == 1) {
             System.out.println("Aluno regular");
         }
@@ -107,10 +118,10 @@ public class ModoAluno extends Aluno{
         }
         }
 
-    public void listarAlunos() {
-        System.out.println("Lista de alunos cadastrados:" );
-        for (String matricula : matriculas) {
-            System.out.println(matricula);
+        public void listarAlunos() {
+        System.out.println("Lista de alunos cadastrados:");
+        for (int i = 0; i < matriculas.size(); i++) {
+            System.out.println("Nome: " + alunos.get(i) + " | Matrícula: " + matriculas.get(i));
         }
     }
 }

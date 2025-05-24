@@ -9,10 +9,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Dados do Aluno
 
-- **Nome completo:** [Preencher aqui]
-- **Matrícula:** [Preencher aqui]
-- **Curso:** [Preencher aqui]
-- **Turma:** [Preencher aqui]
+- **Nome completo:** Lucas Peixoto Rodrigues
+- **Matrícula:** 242024271
+- **Curso:** Engenharias
+- **Turma:** T06
 
 ---
 

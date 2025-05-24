@@ -47,18 +47,35 @@ public class ModoDisciplina {
         System.out.println("Pré-requisitos: " + preRequisitos);
     }
     public void cadastrarTurma() {
+        System.out.print("Digite o código da disciplina: ");
+        String código = scanner.nextLine();
+        boolean codigoExistente = false;
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getCódigo().equals(código)) {
+                codigoExistente = true;
+            }
+            else {
+                System.out.println("Código não cadastrado. Digite um código diferente.");
+                System.out.print("Digite outro código: ");
+                código = scanner.nextLine();
+            }
+        } while (codigoExistente);
         System.out.print("Digite o nome da turma: ");
         String nomeTurma = scanner.nextLine();
-        System.out.print("Digite o nome do professor:");
+        System.out.print("Digite o nome do professor: ");
         String nomeProfessor = scanner.nextLine();
         System.out.print("Digite o semestre: ");
         int semestre = scanner.nextInt();
-        System.out.print("Digite o forma de avaliação: ");
-        String formaDeAvaliacao = scanner.nextLine();
-        System.out.print("Digite o modelo de ensino (remoto ou presencial): ");
+        System.out.println("Digite o forma de avaliação: ");
+        System.out.println("a. Pesos iguais");
+        System.out.println("b. Pesos diferentes");
+        char formaDeAvaliacao = scanner.next().charAt(0); 
+        System.out.println("Digite o modelo de ensino (remoto ou presencial): ");
         String modeloDeEnsino = scanner.nextLine();
         System.out.print("Digite o horário da turma: ");
         String horario = scanner.nextLine();
+        System.out.print("Digite a sala da turma: ");
+        String sala = scanner.nextLine();
         turmas.add(nomeTurma);
 
         System.out.println("Turma cadastrada com sucesso!");
@@ -68,6 +85,26 @@ public class ModoDisciplina {
         System.out.println("Forma de avaliação: " + formaDeAvaliacao);
         System.out.println("Modelo de ensino: " + modeloDeEnsino);
         System.out.println("Horário da aula: " + horario);
+        System.out.println("Sala de aula: " + sala);
     }
-
+    public void listarTurmas() {
+        if (turmas.isEmpty()) {
+            System.out.println("Nenhuma turma cadastrada.");
+        } else {
+            System.out.println("Turmas cadastradas:");
+            for (String turma : turmas) {
+                System.out.println("- " + turma);
+            }
+        }
+    }
+    public void listarDisciplinas() {
+        if (disciplinas.isEmpty()) {
+            System.out.println("Nenhuma disciplina cadastrada.");
+        } else {
+            System.out.println("Disciplinas cadastradas: ");
+            for (Disciplina disciplina : disciplinas) {
+                System.out.print(disciplina.getNomeDisciplina() + " - " + disciplina.getCódigo());
+            }
+        }
+    }
 }
