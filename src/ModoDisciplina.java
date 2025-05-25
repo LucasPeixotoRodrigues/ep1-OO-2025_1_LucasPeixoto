@@ -46,46 +46,46 @@ public class ModoDisciplina extends Disciplina{
         System.out.println("Pré-requisitos: " + preRequisitos);
     }
     public void cadastrarTurma() {
-        boolean codigoExistente = false;
-        System.out.print("Digite o código da disciplina: ");
-        String codigo = scanner.nextLine();
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getCodigo().equals(codigo)) {
-                codigoExistente = true;
-            }
-            else {
-                System.out.println("Código não cadastrado. Digite um código diferente.");
-                System.out.print("Digite outro código: ");
-                codigo = scanner.nextLine();
-            }
-        } while (codigoExistente);
-        System.out.print("Digite o nome da turma: ");
-        String nomeTurma = scanner.nextLine();
-        System.out.print("Digite o nome do professor: ");
-        String nomeProfessor = scanner.nextLine();
-        System.out.print("Digite o semestre: ");
-        int semestre = scanner.nextInt();
-        System.out.println("Digite o forma de avaliação: ");
-        System.out.println("a. Pesos iguais");
-        System.out.println("b. Pesos diferentes");
-        char formaDeAvaliacao = scanner.next().charAt(0); 
-        System.out.println("Digite o modelo de ensino (remoto ou presencial): ");
-        String modeloDeEnsino = scanner.nextLine();
-        System.out.print("Digite o horário da turma: ");
-        String horario = scanner.nextLine();
-        System.out.print("Digite a sala da turma: ");
-        String sala = scanner.nextLine();
-        Turma novaTurma = new Turma(professorResponsavel, semestre, formaDeAvaliacao, presencial, sala, horario, capacidadeMaximaDeAlunos);
-        turmas.add(novaTurma);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Cadastro de turmas para a disciplina " + nomeDisciplina);
 
-        System.out.println("Turma cadastrada com sucesso!");
-        System.out.println("Turma: " + nomeTurma);
-        System.out.println("Professor: " + nomeProfessor);
-        System.out.println("Semestre: " + semestre);
-        System.out.println("Forma de avaliação: " + formaDeAvaliacao);
-        System.out.println("Modelo de ensino: " + modeloDeEnsino);
-        System.out.println("Horário da aula: " + horario);
-        System.out.println("Sala de aula: " + sala);
+        char opcao;
+        do {
+            System.out.print("Digite o nome do professor: ");
+            String professorResponsavel = scanner.nextLine();
+
+            System.out.print("Digite o semestre (ex: 2025.1): ");
+            String semestre = scanner.nextLine();
+
+            System.out.println("Qual a forma de avaliação? ");
+            System.out.println("a. Pesos iguais");
+            System.out.println("b. Pesos diferentes");
+            String formaDeAvaliacao = scanner.nextLine();
+            boolean formaChar = formaDeAvaliacao.equalsIgnoreCase("a") || formaDeAvaliacao.equalsIgnoreCase("b");
+
+            System.out.print("A turma é presencial? (s/n): ");
+            String resp = scanner.nextLine();
+            boolean presencial = resp.equalsIgnoreCase("s");
+
+            String sala = "";
+            if (presencial) {
+                System.out.print("Digite a sala: ");
+                sala = scanner.nextLine();
+            }
+            System.out.print("Digite o horário (ex: 246m2): ");
+            String horario = scanner.nextLine();
+
+            System.out.print("Digite a capacidade máxima de alunos: ");
+            int capacidadeMaximaDeAlunos = Integer.parseInt(scanner.nextLine());
+
+            // Criando e adicionando a turma na disciplina
+            Turma turma = new Turma(professorResponsavel, semestre, formaDeAvaliacao, presencial, sala, horario, capacidadeMaximaDeAlunos);
+            this.adicionarTurma(turma);
+
+            System.out.print("Deseja cadastrar outra turma? (s/n): ");
+            opcao = scanner.nextLine().charAt(0);
+
+        } while (opcao == 's' || opcao == 'S');
     }
     public void listarDisciplinas() {
         if (disciplinas.isEmpty()) {
