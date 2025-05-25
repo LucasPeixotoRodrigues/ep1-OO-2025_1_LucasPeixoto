@@ -3,28 +3,33 @@ import java.util.ArrayList;
 public class Disciplina {
     public static Object nomeDisciplina;
     protected String nomeDisciplna;
-    protected String código;
-    protected int cargaHorária;
+    protected String codigo;
+    protected int cargaHoraria;
     ArrayList<String> préRequisitos = new ArrayList<String>();
+    ArrayList<Turma> turmas = new ArrayList<>();
 
-    public void setDisciplina(String nomeDisciplina, String código, int cargaHorária, ArrayList<String> préRequisitos){
+    public void setDisciplina(String nomeDisciplina, String codigo, int cargaHoraria, ArrayList<String> préRequisitos, ArrayList<Turma> turmas) {
         this.nomeDisciplna = nomeDisciplina;
-        this.código = código;
-        this.cargaHorária = cargaHorária;
+        this.codigo = codigo;
+        this.cargaHoraria = cargaHoraria;
         this.préRequisitos = préRequisitos;
+        this.turmas = new ArrayList<>();
 
     }
         public String getNomeDisciplina() {
         return nomeDisciplna;
     }
-        public String getCódigo() {
-        return código;
+        public String getCodigo() {
+        return codigo;
     }
-    public int getCargaHorária() {
-        return cargaHorária;
+    public int getCargaHoraria() {
+        return cargaHoraria;
     }
     public ArrayList<String> getPréRequisitos(){
         return préRequisitos;
+    }
+    public ArrayList<Turma> getTurmas() {
+        return turmas;
     }
 
 }

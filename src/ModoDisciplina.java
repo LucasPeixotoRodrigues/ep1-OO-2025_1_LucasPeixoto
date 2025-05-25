@@ -1,11 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ModoDisciplina {
+public class ModoDisciplina extends Disciplina{
 
     Scanner scanner = new Scanner(System.in);
     ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
-    ArrayList<String> turmas = new ArrayList<String>();
 
     public void cadastrarDisciplina() {
         System.out.print("Digite o nome da disciplina: ");
@@ -16,7 +15,7 @@ public class ModoDisciplina {
         do {
             codigoExistente = false;
             for (Disciplina disciplina : disciplinas) {
-                if (disciplina.getCódigo().equals(codigo)) {
+                if (disciplina.getCodigo().equals(codigo)) {
                     codigoExistente = true;
                     System.out.println("Código já cadastrado. Digite um código diferente.");
                     System.out.print("Digite outro código: ");
@@ -38,7 +37,7 @@ public class ModoDisciplina {
             }
         }
         Disciplina novaDisciplina = new Disciplina();
-        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos);
+        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos, turmas);
         disciplinas.add(novaDisciplina);
         System.out.println("Disciplina cadastrada com sucesso!");
         System.out.println("Nome: " + nome);
@@ -47,17 +46,17 @@ public class ModoDisciplina {
         System.out.println("Pré-requisitos: " + preRequisitos);
     }
     public void cadastrarTurma() {
-        System.out.print("Digite o código da disciplina: ");
-        String código = scanner.nextLine();
         boolean codigoExistente = false;
+        System.out.print("Digite o código da disciplina: ");
+        String codigo = scanner.nextLine();
         for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getCódigo().equals(código)) {
+            if (disciplina.getCodigo().equals(codigo)) {
                 codigoExistente = true;
             }
             else {
                 System.out.println("Código não cadastrado. Digite um código diferente.");
                 System.out.print("Digite outro código: ");
-                código = scanner.nextLine();
+                codigo = scanner.nextLine();
             }
         } while (codigoExistente);
         System.out.print("Digite o nome da turma: ");
@@ -76,7 +75,8 @@ public class ModoDisciplina {
         String horario = scanner.nextLine();
         System.out.print("Digite a sala da turma: ");
         String sala = scanner.nextLine();
-        turmas.add(nomeTurma);
+        Turma novaTurma = new Turma(professorResponsavel, semestre, formaDeAvaliacao, presencial, sala, horario, capacidadeMaximaDeAlunos);
+        turmas.add(novaTurma);
 
         System.out.println("Turma cadastrada com sucesso!");
         System.out.println("Turma: " + nomeTurma);
@@ -87,24 +87,29 @@ public class ModoDisciplina {
         System.out.println("Horário da aula: " + horario);
         System.out.println("Sala de aula: " + sala);
     }
-    public void listarTurmas() {
-        if (turmas.isEmpty()) {
-            System.out.println("Nenhuma turma cadastrada.");
-        } else {
-            System.out.println("Turmas cadastradas:");
-            for (String turma : turmas) {
-                System.out.println("- " + turma);
-            }
-        }
-    }
     public void listarDisciplinas() {
         if (disciplinas.isEmpty()) {
             System.out.println("Nenhuma disciplina cadastrada.");
         } else {
             System.out.println("Disciplinas cadastradas: ");
             for (Disciplina disciplina : disciplinas) {
-                System.out.print(disciplina.getNomeDisciplina() + " - " + disciplina.getCódigo());
+                System.out.print(disciplina.getNomeDisciplina() + " - " + disciplina.getCodigo());
             }
         }
+    }
+    public void adicionarTurma(Turma turma) {
+        turmas.add(turma);
+    }
+
+    public void listarTurmas() {
+        System.out.println("Turmas da disciplina " + nomeDisciplna + ":");
+        for (Turma turma : turmas) {
+            System.out.println(turma);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina: " + nomeDisciplina + " | Código: " + codigo + " | Carga Horária: " + cargaHoraria;
     }
 }

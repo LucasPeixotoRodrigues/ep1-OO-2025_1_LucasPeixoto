@@ -1,36 +1,35 @@
-import java.util.ArrayList;
+
 
 public class Turma extends Disciplina{
-    protected String nomeDisciplina;
-    protected String professorResponsável;
-    protected int semestre;
-    protected char formaDeAvaliacao;
-    protected String modeloDeEnsino;
+
+    protected String professorResponsavel;
+    protected String semestre;
+    protected String formaDeAvaliacao;
+    protected boolean presencial;
     protected String sala;
     protected String horario;
-    protected int capacidadeMáximaDeAlunos;
-    protected ArrayList<String> alunosNaTurma = new ArrayList<String>();
+    protected int capacidadeMaximaDeAlunos;
 
-    public void setTurma(String professorResponsável, int semestre, char formaDeAvaliacao, String modeloDeEnsino, String sala, String horario, int capacidadeMáximaDeAlunos){
-        this.professorResponsável = professorResponsável;
+    public Turma(String professorResponsavel, String semestre, String formaDeAvaliacao, boolean presencial, String sala, String horario, int capacidadeMaximaDeAlunos){
+        this.professorResponsavel = professorResponsavel;
         this.semestre = semestre;
         this.formaDeAvaliacao = formaDeAvaliacao;
-        this.modeloDeEnsino = modeloDeEnsino;
+        this.presencial = presencial;
         this.sala = sala;
         this.horario = horario;
-        this.capacidadeMáximaDeAlunos = capacidadeMáximaDeAlunos;
+        this.capacidadeMaximaDeAlunos = capacidadeMaximaDeAlunos;
     }
-    public String getProfessorResponsável() {
-        return professorResponsável;
+    public String getProfessorResponsavel() {
+        return professorResponsavel;
     }
-    public int getSemestre() {
+    public String getSemestre() {
         return semestre;
     }
-    public char getFormaDeAvaliacao() {
+    public String getFormaDeAvaliacao() {
         return formaDeAvaliacao;
     }
-    public String isModeloDeEnsino() {
-        return modeloDeEnsino;
+    public boolean ispresencial() {
+        return presencial;
     }
     public String getSala() {
         return sala;
@@ -38,9 +37,15 @@ public class Turma extends Disciplina{
     public String getHorario() {
         return horario;
     }
-    public int getCapacidadeMáximaDeAlunos() {
-        return capacidadeMáximaDeAlunos;
+    public int getCapacidadeMaximaDeAlunos() {
+        return capacidadeMaximaDeAlunos;
     }
-
-    
+    @Override
+    public String toString() {
+        return "Turma | Professor: " + professorResponsavel +
+               " | Semestre: " + semestre +
+               " | Horário: " + horario +
+               " | " + (presencial ? "Sala: " + sala : "Remota") +
+               " | Capacidade: " + capacidadeMaximaDeAlunos;
+    }
 } 
