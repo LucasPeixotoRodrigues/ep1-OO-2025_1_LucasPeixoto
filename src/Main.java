@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
     static ModoAluno modoAluno = new ModoAluno();
     static ModoDisciplina modoDisciplina = new ModoDisciplina();
     static ModoAvaliacao modoAvaliacao = new ModoAvaliacao();
@@ -10,76 +8,154 @@ public class Main {
     static AlunoEspecial alunoEspecial = new AlunoEspecial();
     static Disciplina disiplina = new Disciplina();
     static Avaliacao avaliacao = new Avaliacao();
-    static Turma turma = new Turma();
-    protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
-    protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
-    public static void main(String[] args) throws Exception {
-        while (true) {
-            System.out.println("Escolha uma opção:");
-            System.out.println("1. Modo Aluno");
-            System.out.println("2. Modo Disciplina");
-            System.out.println("3. Modo Avaliação");
-            System.out.println("4. Sair");
-            Scanner scanner = new Scanner(System.in);
-            int opcao = scanner.nextInt();
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        boolean executando = true;
+
+        while (executando) {
+            System.out.println("\n===== MENU PRINCIPAL =====");
+            System.out.println("1 - Modo Aluno");
+            System.out.println("2 - Modo Disciplina/Turma");
+            System.out.println("3 - Modo Avaliação/Frequência");
+            System.out.println("0 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            String opcao = scanner.nextLine();
+
             switch (opcao) {
-                case 1:
-                    System.out.println("O que deseja fazer?");
-                    System.out.println("1. Cadastrar aluno");
-                    System.out.println("2. Fazer matrícula em disciplina");
-                    System.out.println("3. Trancar matríula em disciplina");
-                    System.out.println("4. Trancar semestre");
-                    System.out.println("5. Voltar");
-                    int opcaoAluno = scanner.nextInt();
-                    switch(opcaoAluno) {
-                        case 1:
-                            modoAluno.cadastrarAluno();
-                            scanner.close();
-                            return;
-                        case 2:
-                            System.out.println("Informe o tipo de aluno (1 - Aluno regular, 2 - Aluno especial):");
-                            int tipoAluno = scanner.nextInt();
-                            if (tipoAluno == 1) {
-                                modoAluno.fazerMatricula(modoDisciplina.disciplinas);
-                            } else if (tipoAluno == 2) {
-                                alunoEspecial.fazerMatrícula();
-                            } else {
-                                System.out.println("Tipo de aluno inválido.");
-                            }
-                            scanner.close();
-                            return;
-                        case 3:
-                            modoAluno.trancarMatrícula();
-                            scanner.close();
-                            return;
-                        case 4:
-                            modoAluno.trancarSemestre();
-                            scanner.close();
-                            return;
-                        case 5:
-                            break;
-                        default:
-                            System.out.println("Opção inválida.");
-                    }
-                    scanner.close();
-                    return;
-                case 2:
-                
-                    modoDisciplina.cadastrarDisciplina();
+                case "1":
+                    menuAluno(scanner);
                     break;
-                case 3:
-                    modoAvaliacao.lancarNota();
+                case "2":
+                    menuDisciplinaTurma(scanner);
                     break;
-                case 4:
-                    System.out.println("Saindo...");
+                case "3":
+                    menuAvaliacaoFrequencia(scanner);
+                    break;
+                case "0":
+                    executando = false;
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("Opção inválida. Tente novamente.");
             }
-            scanner.close();
-            modoAluno.scanner.close();
-            modoDisciplina.scanner.close();
-            modoAvaliacao.scanner.close();
+        }
+
+        scanner.close();
+    }
+
+    // ================= MENU ALUNO ====================
+    public static void menuAluno(Scanner Scanner) {
+        boolean voltar = false;
+        while (!voltar) {
+            System.out.println("\n--- MENU ALUNO ---");
+            System.out.println("1 - Cadastrar Aluno");
+            System.out.println("2 - Listar Alunos");
+            System.out.println("3 - Matricular em Disciplina");
+            System.out.println("4 - Trancar Disciplina");
+            System.out.println("5 - Trancar Semestre");
+            System.out.println("0 - Voltar ao Menu Principal");
+            System.out.print("Escolha uma opção: ");
+
+            String opcao = Scanner.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    System.out.println("Função de cadastrar aluno.");
+                    modoAluno.cadastrarAluno();
+                    break;
+                case "2":
+                    System.out.println("Função de listar alunos.");
+                    modoAluno.listarAlunos();
+                    break;
+                case "3":
+                    System.out.println("Função de matricular aluno em disciplina.");
+                    modoAluno.fazerMatricula(modoDisciplina.disciplinas);
+                    break;
+                case "4":
+                    System.out.println("Função de trancar disciplina.");
+                    modoAluno.trancarMatrícula();
+                    break;
+                case "5":
+                    System.out.println("Função de trancar semestre.");
+                    modoAluno.trancarSemestre();
+                    break;
+                case "0":
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+
+    // ================ MENU DISCIPLINA/TURMA =================
+    public static void menuDisciplinaTurma(Scanner scanner) {
+        boolean voltar = false;
+        while (!voltar) {
+            System.out.println("\n--- MENU DISCIPLINA/TURMA ---");
+            System.out.println("1 - Cadastrar Disciplina");
+            System.out.println("2 - Cadastrar Turma");
+            System.out.println("3 - Listar Turmas");
+            System.out.println("0 - Voltar ao Menu Principal");
+            System.out.print("Escolha uma opção: ");
+
+            String opcao = scanner.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    System.out.println("Função de cadastrar disciplina.");
+                    break;
+                case "2":
+                    System.out.println("Função de cadastrar turma.");
+                    break;
+                case "3":
+                    System.out.println("Função de listar turmas.");
+                    break;
+                case "0":
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
+    }
+
+    // ================ MENU AVALIAÇÃO/FREQUÊNCIA =================
+    public static void menuAvaliacaoFrequencia(Scanner scanner) {
+        boolean voltar = false;
+        while (!voltar) {
+            System.out.println("\n--- MENU AVALIAÇÃO/FREQUÊNCIA ---");
+            System.out.println("1 - Lançar Notas");
+            System.out.println("2 - Lançar Frequência");
+            System.out.println("3 - Gerar Relatórios");
+            System.out.println("4 - Emitir Boletim");
+            System.out.println("0 - Voltar ao Menu Principal");
+            System.out.print("Escolha uma opção: ");
+
+            String opcao = scanner.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    System.out.println("Função de lançar notas.");
+                    break;
+                case "2":
+                    System.out.println("Função de lançar frequência.");
+                    break;
+                case "3":
+                    System.out.println("Função de gerar relatórios.");
+                    break;
+                case "4":
+                    System.out.println("Função de emitir boletim.");
+                    break;
+                case "0":
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
         }
     }
 }

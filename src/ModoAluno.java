@@ -2,8 +2,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ModoAluno extends Aluno{
-
+public class ModoAluno extends Aluno {
+    
     public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
         System.out.print("Fazer matrícula em:");
         String nomeDisciplina = scanner.nextLine();
@@ -54,6 +54,7 @@ public class ModoAluno extends Aluno{
 
     boolean matriculaExistente = false;
     public void cadastrarAluno() {
+        System.out.println("Cadastro de aluno");
         System.out.println("Digite o nome do aluno: ");
         String nome = scanner.nextLine();
         System.out.print("Digite a matrícula do aluno: ");
@@ -116,8 +117,8 @@ public class ModoAluno extends Aluno{
                 tipoAluno = scanner.nextInt();
             }
         }
-        }
-
+        System.out.println("Cadastro concluído.");
+}
         public void listarAlunos() {
         System.out.println("Lista de alunos cadastrados:");
         for (int i = 0; i < matriculas.size(); i++) {
