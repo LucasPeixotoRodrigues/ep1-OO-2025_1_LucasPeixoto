@@ -46,7 +46,21 @@ public class ModoDisciplina extends Disciplina{
         System.out.println("Pré-requisitos: " + preRequisitos);
     }
     public void cadastrarTurma() {
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Em qual disciplina deseja cadastrar a turma?");
+        listarDisciplinas();
+        System.out.print("Digite o nome da disciplina: ");
+        String nomeDisciplina = scanner.nextLine();
+        boolean disciplinaEncontrada = false;
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+                disciplinaEncontrada = true;
+                break;
+            }
+        }
+        if (!disciplinaEncontrada) {
+            System.out.println("Disciplina não encontrada. Tente novamente.");
+            return;
+        }
         System.out.println("Cadastro de turmas para a disciplina " + nomeDisciplina);
 
         char opcao;

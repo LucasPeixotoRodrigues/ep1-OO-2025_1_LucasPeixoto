@@ -5,7 +5,9 @@ public class ModoAvaliacao {
     Scanner scanner = new Scanner(System.in);
 
     public void lancarNota() {
-        System.out.print("Forma de avaliação(a ou b):");
+        System.out.println("Qual a forma de avaliação?");
+        System.out.println("a - Pesos iguais");
+        System.out.println("b - Pesos diferentes");
         char formaDeAvaliacao = scanner.next().charAt(0);
         System.out.print("Digite a nota da P1:");
         float p1 = scanner.nextFloat();
@@ -33,4 +35,18 @@ public class ModoAvaliacao {
         System.out.println("Forma de avaliação inválida.");
     }
 }
+    public void calcularFrequencia() {
+        System.out.println("Digite o total de aulas:");
+        int totalAulas = scanner.nextInt();
+        System.out.println("Digite a quantidade de faltas:");
+        int faltas = scanner.nextInt();
+        float frequencia = ((totalAulas - faltas) / (float) totalAulas) * 100;
+        System.out.println("Frequência: " + frequencia + "%");
+        if (frequencia >= 75) {
+            System.out.println("Aprovação por frequência.");
+        } else {
+            System.out.println("Reprovação por frequência.");
+        }
+    }
+
 }

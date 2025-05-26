@@ -46,7 +46,7 @@ public class Main {
         scanner.close();
     }
 
-    // ================= MENU ALUNO ====================
+    // <<<<<<<<<<<<<<<< MENU ALUNO >>>>>>>>>>>>>>>>
     public static void menuAluno(Scanner Scanner) {
         boolean voltar = false;
         while (!voltar) {
@@ -91,7 +91,7 @@ public class Main {
         }
     }
 
-    // ================ MENU DISCIPLINA/TURMA =================
+    // <<<<<<<<<<<<<<<< MENU DISCIPLINA/TURMA >>>>>>>>>>>>>>>>
     public static void menuDisciplinaTurma(Scanner scanner) {
         boolean voltar = false;
         while (!voltar) {
@@ -107,12 +107,15 @@ public class Main {
             switch (opcao) {
                 case "1":
                     System.out.println("Função de cadastrar disciplina.");
+                    modoDisciplina.cadastrarDisciplina();
                     break;
                 case "2":
                     System.out.println("Função de cadastrar turma.");
+                    modoDisciplina.cadastrarTurma();
                     break;
                 case "3":
                     System.out.println("Função de listar turmas.");
+                    modoDisciplina.listarTurmas();
                     break;
                 case "0":
                     voltar = true;
@@ -123,7 +126,7 @@ public class Main {
         }
     }
 
-    // ================ MENU AVALIAÇÃO/FREQUÊNCIA =================
+    // <<<<<<<<<<<<<<<< MENU AVALIAÇÃO/FREQUÊNCIA >>>>>>>>>>>>>>>>
     public static void menuAvaliacaoFrequencia(Scanner scanner) {
         boolean voltar = false;
         while (!voltar) {
@@ -140,6 +143,7 @@ public class Main {
             switch (opcao) {
                 case "1":
                     System.out.println("Função de lançar notas.");
+                    modoAvaliacao.lancarNota();
                     break;
                 case "2":
                     System.out.println("Função de lançar frequência.");

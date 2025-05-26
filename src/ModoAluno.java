@@ -4,55 +4,6 @@ import java.util.Scanner;
 
 public class ModoAluno extends Aluno {
     
-    public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
-        System.out.print("Fazer matrícula em:");
-        String nomeDisciplina = scanner.nextLine();
-        Disciplina disciplinaSelecionada = null;
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
-                disciplinaSelecionada = disciplina;
-                break;
-            }
-        }
-        ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
-        boolean possuiTodosPreRequisitos = true;
-        for (String pre : preRequisitos) {
-            if (!disciplinasFeitas.contains(pre)) {
-                possuiTodosPreRequisitos = false;
-                break;
-            }
-        }
-        if (possuiTodosPreRequisitos) {
-            turmasMatriculadas.add(nomeDisciplina);
-            System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
-        } else {
-            System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
-        }
-    }
-    public void trancarMatrícula(){
-        System.out.print("Trancar matrícula em:");
-        String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.remove(nomeDisciplna);
-        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
-    }
-    public void trancarSemestre(){
-        System.out.print("Deseja trancar semestre? (s/n):");
-        char resposta = scanner.next().charAt(0);
-        if (resposta == 's' || resposta == 'S') {
-            turmasMatriculadas.clear();
-            System.out.println("Trancamento do semestre realizado com sucesso");
-        }
-        else if (resposta == 'n' || resposta == 'N') {
-            System.out.print("Trancamento do semstre não realizado");
-        }
-        else {
-            System.out.print("Opção inválida");
-        }
-    }
-
-    Scanner scanner = new Scanner(System.in);
-
-    boolean matriculaExistente = false;
     public void cadastrarAluno() {
         System.out.println("Cadastro de aluno");
         System.out.println("Digite o nome do aluno: ");
@@ -125,4 +76,104 @@ public class ModoAluno extends Aluno {
             System.out.println("Nome: " + alunos.get(i) + " | Matrícula: " + matriculas.get(i));
         }
     }
+
+    public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
+        System.out.print("Fazer matrícula em:");
+        String nomeDisciplina = scanner.nextLine();
+        Disciplina disciplinaSelecionada = null;
+        for (Disciplina disciplina : disciplinas) {
+            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+                disciplinaSelecionada = disciplina;
+                break;
+            }
+        }
+        ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
+        boolean possuiTodosPreRequisitos = true;
+        for (String pre : preRequisitos) {
+            if (!disciplinasFeitas.contains(pre)) {
+                possuiTodosPreRequisitos = false;
+                break;
+            }
+        }
+        if (possuiTodosPreRequisitos) {
+            if (turmasMatriculadas.contains(nomeDisciplina)) {
+                System.out.println("Você já está matriculado nessa disciplina.");
+                return;
+            }
+            if (turmasMatriculadas.size() >= 6) {
+                System.out.println("Você já está matriculado em 6 disciplinas. Não é possível matricular em mais.");
+                return;
+            }
+            if (disciplinasFeitas.contains(nomeDisciplina)) {
+                System.out.println("Você já fez essa disciplina.");
+                return;
+            }
+            if (nomeDisciplina.isEmpty()) {
+                System.out.println("Nome da disciplina não pode ser vazio.");
+                return;
+            }
+            if (!nomeDisciplina.matches("[a-zA-Z0-9 ]+")) {
+                System.out.println("Nome da disciplina deve conter apenas letras, números e espaços.");
+                return;
+            }
+            if (disciplina.turmas.isEmpty()) {
+                System.out.println("Não há turmas disponíveis para essa disciplina.");
+                return;
+            }
+            else {
+                ArrayList<Turma> turmasDisponiveis = disciplinaSelecionada.getTurmas();
+                System.out.println("Turmas disponíveis para " + nomeDisciplina + ":");
+                for (Turma turma : turmasDisponiveis) {
+                    System.out.println("Código: " + turma.getCodigo() + " | Horário: " + turma.getHorario());
+                }
+                System.out.println("Digite o código da turma que deseja se matricular:");
+                String codigoTurma = scanner.nextLine();
+                boolean turmaEncontrada = false;
+                for (Turma turma : turmasDisponiveis) {
+                    if (turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
+                        turmaEncontrada = true;
+                        if (turma.getCapacidadeMaximaDeAlunos() > turma.getVagasOcupadas()) {
+                            turmasMatriculadas.add(nomeDisciplina);
+                            turma.setVagasOcupadas(turma.getVagasOcupadas() + 1);
+                            System.out.format("Matrícula em %s realizada com sucesso na turma %s", nomeDisciplina, codigoTurma);
+                        } else {
+                            System.out.println("Não há vagas disponíveis nessa turma.");
+                        }
+                        break;
+                    }
+                    else if (!turmaEncontrada) {
+                        System.out.println("Turma não encontrada. Tente novamente.");
+                        return;
+                    }
+                }
+            }
+        } else {
+            System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
+        }
+    }
+    public void trancarMatrícula(){
+        System.out.print("Trancar matrícula em:");
+        String nomeDisciplina = scanner.nextLine();
+        turmasMatriculadas.remove(nomeDisciplna);
+        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+    }
+    public void trancarSemestre(){
+        System.out.print("Deseja trancar semestre? (s/n):");
+        char resposta = scanner.next().charAt(0);
+        if (resposta == 's' || resposta == 'S') {
+            turmasMatriculadas.clear();
+            System.out.println("Trancamento do semestre realizado com sucesso");
+        }
+        else if (resposta == 'n' || resposta == 'N') {
+            System.out.print("Trancamento do semstre não realizado");
+        }
+        else {
+            System.out.print("Opção inválida");
+        }
+    }
+
+    Scanner scanner = new Scanner(System.in);
+
+    boolean matriculaExistente = false;
+    
 }

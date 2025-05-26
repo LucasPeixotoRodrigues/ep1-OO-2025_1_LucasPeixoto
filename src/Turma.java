@@ -9,6 +9,7 @@ public class Turma extends Disciplina{
     protected String sala;
     protected String horario;
     protected int capacidadeMaximaDeAlunos;
+    protected int vagasOcupadas;
 
     public Turma(String professorResponsavel, String semestre, String formaDeAvaliacao, boolean presencial, String sala, String horario, int capacidadeMaximaDeAlunos){
         this.professorResponsavel = professorResponsavel;
@@ -39,6 +40,12 @@ public class Turma extends Disciplina{
     }
     public int getCapacidadeMaximaDeAlunos() {
         return capacidadeMaximaDeAlunos;
+    }
+    public void setVagasOcupadas(int vagasOcupadas) {
+        this.vagasOcupadas = vagasOcupadas;
+    }
+    public int getVagasOcupadas() {
+        return vagasOcupadas;
     }
     @Override
     public String toString() {
