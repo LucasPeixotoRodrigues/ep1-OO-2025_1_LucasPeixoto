@@ -20,7 +20,7 @@ public class AlunoEspecial extends Aluno {
         if (turmasMatriculadas.size() < 3) {
             System.out.print("Fazer matrícula em:");
             String nomeDisciplina = scanner.nextLine();
-            turmasMatriculadas.add(nomeDisciplna);
+            turmasMatriculadas.add(nomeDisciplina);
             System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
         } 
         else {
@@ -30,7 +30,7 @@ public class AlunoEspecial extends Aluno {
     public void trancarMatrícula(){
         System.out.print("Trancar matrícula em:");
         String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.remove(nomeDisciplna);
+        turmasMatriculadas.remove(nomeDisciplina);
         System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
     }
     public void trancarSemestre(){

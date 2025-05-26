@@ -38,8 +38,10 @@ public class ModoAvaliacao {
     public void calcularFrequencia() {
         System.out.println("Digite o total de aulas:");
         int totalAulas = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Digite a quantidade de faltas:");
         int faltas = scanner.nextInt();
+        scanner.nextLine();
         float frequencia = ((totalAulas - faltas) / (float) totalAulas) * 100;
         System.out.println("Frequência: " + frequencia + "%");
         if (frequencia >= 75) {

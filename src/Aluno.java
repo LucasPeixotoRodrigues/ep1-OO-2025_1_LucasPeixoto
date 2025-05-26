@@ -6,20 +6,17 @@ public class Aluno extends Disciplina{
     protected String cursoDeGraduação;
     protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
     protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
-    protected ArrayList<String> matriculas = new ArrayList<String>();
-    protected ArrayList<String> alunos = new ArrayList<String>();
     
     Scanner scanner = new Scanner (System.in);
     Disciplina disciplina = new Disciplina();
     
-    public void setAluno(String nome, int matricula, String cursoDeGraduação, ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas, ArrayList<String> matriculas, ArrayList<String> alunos){
+    public void setAluno(String nome, int matricula, String cursoDeGraduação, ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas){
         this.nome = nome;
         this.matricula = matricula;
         this.cursoDeGraduação = cursoDeGraduação;
         this.turmasMatriculadas = turmasMatriculadas;
         this.disciplinasFeitas = disciplinasFeitas;
-        this.matriculas = matriculas;
-        this.alunos = alunos;
+
     }
     public String getNome(){
         return nome;
@@ -35,12 +32,6 @@ public class Aluno extends Disciplina{
     }
     public ArrayList<String> getDisciplinasFeitas() {
         return disciplinasFeitas;
-    }
-    public ArrayList<String> getMatriculas() {
-        return matriculas;
-    }
-    public ArrayList<String> getAlunos() {
-        return alunos;
     }
     //public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
         //System.out.print("Fazer matrícula em:");

@@ -2,8 +2,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ModoAluno extends Aluno {
-    
+public class ModoAluno{
+    private ArrayList<String> alunos = new ArrayList<>();
+    private ArrayList<String> matriculas = new ArrayList<>();
+    private ArrayList<String> disciplinasFeitas = new ArrayList<>();
+    private ArrayList<String> turmasMatriculadas = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+    private boolean matriculaExistente = false;
+
     public void cadastrarAluno() {
         System.out.println("Cadastro de aluno");
         System.out.println("Digite o nome do aluno: ");
@@ -23,6 +29,7 @@ public class ModoAluno extends Aluno {
             matricula = scanner.nextLine();
         }
         do {
+            matriculaExistente = false;
             for (String matriculaExistenteStr : matriculas) {
                 if (matriculaExistenteStr.equals(matricula)) {
                     matriculaExistente = true;
@@ -50,7 +57,7 @@ public class ModoAluno extends Aluno {
         System.out.println("1. Aluno Regular");
         System.out.println("2. Aluno Especial");
         int tipoAluno = scanner.nextInt();
-
+        scanner.nextLine();
         System.out.println("Aluno cadastrado com sucesso!");
         System.out.println("Nome: " + nome);
         System.out.println("Matrícula: " + matricula);
@@ -66,6 +73,7 @@ public class ModoAluno extends Aluno {
             while (tipoAluno != 1 && tipoAluno != 2) {
                 System.out.println("Tipo de aluno inválido. Tente novamente.");
                 tipoAluno = scanner.nextInt();
+                scanner.nextLine();
             }
         }
         System.out.println("Cadastro concluído.");
@@ -158,7 +166,7 @@ public class ModoAluno extends Aluno {
     public void trancarMatrícula(){
         System.out.print("Trancar matrícula em:");
         String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.remove(nomeDisciplna);
+        turmasMatriculadas.remove(nomeDisciplina);
         System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
     }
     public void trancarSemestre(){
@@ -175,9 +183,5 @@ public class ModoAluno extends Aluno {
             System.out.print("Opção inválida");
         }
     }
-
-    Scanner scanner = new Scanner(System.in);
-
-    boolean matriculaExistente = false;
     
 }

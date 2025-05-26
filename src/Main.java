@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
 public class Main {
+    static GerenciadorDeAlunos gerenciadorDeAlunos = new GerenciadorDeAlunos();
+    static GerenciadorDeDisciplinas gerenciadorDeDisciplinas = new GerenciadorDeDisciplinas();
     static ModoAluno modoAluno = new ModoAluno();
-    static ModoDisciplina modoDisciplina = new ModoDisciplina();
+    static ModoDisciplina modoDisciplina = new ModoDisciplina(gerenciadorDeDisciplinas);
     static ModoAvaliacao modoAvaliacao = new ModoAvaliacao();
     static Aluno aluno = new Aluno();
     static AlunoEspecial alunoEspecial = new AlunoEspecial();
-    static Disciplina disiplina = new Disciplina();
+    static Disciplina disciplina = new Disciplina();
     static Avaliacao avaliacao = new Avaliacao();
     public static void main(String[] args) {
 
@@ -72,7 +74,7 @@ public class Main {
                     break;
                 case "3":
                     System.out.println("Função de matricular aluno em disciplina.");
-                    modoAluno.fazerMatricula(modoDisciplina.disciplinas);
+                    modoAluno.fazerMatricula(gerenciadorDeDisciplinas.listarDisciplinas());
                     break;
                 case "4":
                     System.out.println("Função de trancar disciplina.");
@@ -115,7 +117,7 @@ public class Main {
                     break;
                 case "3":
                     System.out.println("Função de listar turmas.");
-                    modoDisciplina.listarTurmas();
+                    modoDisciplina.listarTurmas(disciplina);
                     break;
                 case "0":
                     voltar = true;

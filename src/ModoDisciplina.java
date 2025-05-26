@@ -1,30 +1,27 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class ModoDisciplina extends Disciplina{
+public class ModoDisciplina {
 
+    private GerenciadorDeDisciplinas gerenciadorDeDisciplinas;
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
+    public ModoDisciplina(GerenciadorDeDisciplinas gerenciador) {
+        this.gerenciadorDeDisciplinas = gerenciador;
+    }
+    
     public void cadastrarDisciplina() {
         System.out.print("Digite o nome da disciplina: ");
         String nome = scanner.nextLine();
         System.out.print("Digite o código da disciplina: ");
         String codigo = scanner.nextLine();
-        boolean codigoExistente;
-        do {
-            codigoExistente = false;
-            for (Disciplina disciplina : disciplinas) {
-                if (disciplina.getCodigo().equals(codigo)) {
-                    codigoExistente = true;
-                    System.out.println("Código já cadastrado. Digite um código diferente.");
-                    System.out.print("Digite outro código: ");
-                    codigo = scanner.nextLine();
-                    break;
-                }
-            }
-        } while (codigoExistente);
-        
+
+         while (gerenciadorDeDisciplinas.buscarDisciplina(codigo) != null) {
+            System.out.println("Código já cadastrado. Digite um código diferente.");
+            System.out.print("Digite outro código: ");
+            codigo = scanner.nextLine();
+        }
+
         System.out.print("Digite a carga horária da disciplina (número de horas): ");
         int cargaHoraria = scanner.nextInt();
         scanner.nextLine();
@@ -37,8 +34,8 @@ public class ModoDisciplina extends Disciplina{
             }
         }
         Disciplina novaDisciplina = new Disciplina();
-        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos, turmas);
-        disciplinas.add(novaDisciplina);
+        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos, new ArrayList<>());
+        gerenciadorDeDisciplinas.adicionarDisciplina(novaDisciplina);
         System.out.println("Disciplina cadastrada com sucesso!");
         System.out.println("Nome: " + nome);
         System.out.println("Código: " + codigo);
@@ -46,84 +43,87 @@ public class ModoDisciplina extends Disciplina{
         System.out.println("Pré-requisitos: " + preRequisitos);
     }
     public void cadastrarTurma() {
-        System.out.println("Em qual disciplina deseja cadastrar a turma?");
         listarDisciplinas();
-        System.out.print("Digite o nome da disciplina: ");
-        String nomeDisciplina = scanner.nextLine();
-        boolean disciplinaEncontrada = false;
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
-                disciplinaEncontrada = true;
-                break;
-            }
-        }
-        if (!disciplinaEncontrada) {
-            System.out.println("Disciplina não encontrada. Tente novamente.");
+
+        System.out.print("Digite o código da disciplina para cadastrar a turma: ");
+        String codigo = scanner.nextLine();
+        Disciplina disciplina = gerenciadorDeDisciplinas.buscarDisciplina(codigo);
+
+        if (disciplina == null) {
+            System.out.println("Disciplina não encontrada.");
             return;
         }
-        System.out.println("Cadastro de turmas para a disciplina " + nomeDisciplina);
-
         char opcao;
         do {
             System.out.print("Digite o nome do professor: ");
             String professorResponsavel = scanner.nextLine();
-
             System.out.print("Digite o semestre (ex: 2025.1): ");
             String semestre = scanner.nextLine();
-
             System.out.println("Qual a forma de avaliação? ");
             System.out.println("a. Pesos iguais");
             System.out.println("b. Pesos diferentes");
             String formaDeAvaliacao = scanner.nextLine();
-            boolean formaChar = formaDeAvaliacao.equalsIgnoreCase("a") || formaDeAvaliacao.equalsIgnoreCase("b");
-
             System.out.print("A turma é presencial? (s/n): ");
-            String resp = scanner.nextLine();
-            boolean presencial = resp.equalsIgnoreCase("s");
-
+            boolean presencial = scanner.nextLine().equalsIgnoreCase("s");
             String sala = "";
+
             if (presencial) {
                 System.out.print("Digite a sala: ");
                 sala = scanner.nextLine();
             }
+
             System.out.print("Digite o horário (ex: 246m2): ");
             String horario = scanner.nextLine();
-
             System.out.print("Digite a capacidade máxima de alunos: ");
             int capacidadeMaximaDeAlunos = Integer.parseInt(scanner.nextLine());
-
-            // Criando e adicionando a turma na disciplina
-            Turma turma = new Turma(professorResponsavel, semestre, formaDeAvaliacao, presencial, sala, horario, capacidadeMaximaDeAlunos);
-            this.adicionarTurma(turma);
-
+            Turma turma = new Turma(
+                professorResponsavel,
+                semestre,
+                formaDeAvaliacao,
+                presencial,
+                sala,
+                horario,
+                capacidadeMaximaDeAlunos
+            );
+            disciplina.adicionarTurma(turma);
+            System.out.println("Turma cadastrada com sucesso!");
             System.out.print("Deseja cadastrar outra turma? (s/n): ");
             opcao = scanner.nextLine().charAt(0);
-
         } while (opcao == 's' || opcao == 'S');
     }
+
     public void listarDisciplinas() {
+        ArrayList<Disciplina> disciplinas = gerenciadorDeDisciplinas.listarDisciplinas();
+
         if (disciplinas.isEmpty()) {
             System.out.println("Nenhuma disciplina cadastrada.");
         } else {
-            System.out.println("Disciplinas cadastradas: ");
+            System.out.println("Disciplinas cadastradas:");
             for (Disciplina disciplina : disciplinas) {
-                System.out.print(disciplina.getNomeDisciplina() + " - " + disciplina.getCodigo());
+                System.out.println(disciplina);
             }
         }
     }
-    public void adicionarTurma(Turma turma) {
-        turmas.add(turma);
-    }
-
-    public void listarTurmas() {
-        System.out.println("Turmas da disciplina " + nomeDisciplna + ":");
-        for (Turma turma : turmas) {
-            System.out.println(turma);
+    public void adicionarTurma(String codigoDisciplina, Turma turma) {
+    Disciplina d = null;
+    for (Disciplina disciplina : gerenciadorDeDisciplinas.listarDisciplinas()) {
+        if (disciplina.getCodigo().equalsIgnoreCase(codigoDisciplina)) {
+            d = disciplina;
+            break;
         }
     }
-
-    @Override
-    public String toString() {
-        return "Disciplina: " + nomeDisciplina + " | Código: " + codigo + " | Carga Horária: " + cargaHoraria;
+    if (d!= null) {
+        d.adicionarTurma(turma);
+        System.out.println("Turma adicionada com sucesso na disciplina " + d.getNomeDisciplina());
+    } else {
+        System.out.println("Disciplina com código " + codigoDisciplina + " não encontrada.");
     }
+}
+
+    public void listarTurmas(Disciplina disciplina) {
+    System.out.println("Turmas da disciplina " + disciplina.getNomeDisciplina() + ":");
+    for (Turma turma : disciplina.getTurmas()) {
+        System.out.println(turma);
+    }
+}
 }
