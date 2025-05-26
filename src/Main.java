@@ -147,6 +147,7 @@ public class Main {
                     break;
                 case "2":
                     System.out.println("Função de lançar frequência.");
+                    modoAvaliacao.calcularFrequencia();
                     break;
                 case "3":
                     System.out.println("Função de gerar relatórios.");

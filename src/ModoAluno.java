@@ -78,79 +78,83 @@ public class ModoAluno extends Aluno {
     }
 
     public void fazerMatricula(ArrayList<Disciplina> disciplinas) {
-        System.out.print("Fazer matrícula em:");
-        String nomeDisciplina = scanner.nextLine();
-        Disciplina disciplinaSelecionada = null;
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
-                disciplinaSelecionada = disciplina;
-                break;
-            }
-        }
-        ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
-        boolean possuiTodosPreRequisitos = true;
-        for (String pre : preRequisitos) {
-            if (!disciplinasFeitas.contains(pre)) {
-                possuiTodosPreRequisitos = false;
-                break;
-            }
-        }
-        if (possuiTodosPreRequisitos) {
-            if (turmasMatriculadas.contains(nomeDisciplina)) {
-                System.out.println("Você já está matriculado nessa disciplina.");
-                return;
-            }
-            if (turmasMatriculadas.size() >= 6) {
-                System.out.println("Você já está matriculado em 6 disciplinas. Não é possível matricular em mais.");
-                return;
-            }
-            if (disciplinasFeitas.contains(nomeDisciplina)) {
-                System.out.println("Você já fez essa disciplina.");
-                return;
-            }
-            if (nomeDisciplina.isEmpty()) {
-                System.out.println("Nome da disciplina não pode ser vazio.");
-                return;
-            }
-            if (!nomeDisciplina.matches("[a-zA-Z0-9 ]+")) {
-                System.out.println("Nome da disciplina deve conter apenas letras, números e espaços.");
-                return;
-            }
-            if (disciplina.turmas.isEmpty()) {
-                System.out.println("Não há turmas disponíveis para essa disciplina.");
-                return;
-            }
-            else {
-                ArrayList<Turma> turmasDisponiveis = disciplinaSelecionada.getTurmas();
-                System.out.println("Turmas disponíveis para " + nomeDisciplina + ":");
-                for (Turma turma : turmasDisponiveis) {
-                    System.out.println("Código: " + turma.getCodigo() + " | Horário: " + turma.getHorario());
-                }
-                System.out.println("Digite o código da turma que deseja se matricular:");
-                String codigoTurma = scanner.nextLine();
-                boolean turmaEncontrada = false;
-                for (Turma turma : turmasDisponiveis) {
-                    if (turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
-                        turmaEncontrada = true;
-                        if (turma.getCapacidadeMaximaDeAlunos() > turma.getVagasOcupadas()) {
-                            turmasMatriculadas.add(nomeDisciplina);
-                            turma.setVagasOcupadas(turma.getVagasOcupadas() + 1);
-                            System.out.format("Matrícula em %s realizada com sucesso na turma %s", nomeDisciplina, codigoTurma);
-                        } else {
-                            System.out.println("Não há vagas disponíveis nessa turma.");
-                        }
-                        break;
-                    }
-                    else if (!turmaEncontrada) {
-                        System.out.println("Turma não encontrada. Tente novamente.");
-                        return;
-                    }
-                }
-            }
-        } else {
-            System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
+    System.out.print("Fazer matrícula em: ");
+    String nomeDisciplina = scanner.nextLine();
+    Disciplina disciplinaSelecionada = null;
+    for (Disciplina disciplina : disciplinas) {
+        if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+            disciplinaSelecionada = disciplina;
+            break;
         }
     }
+
+    if (disciplinaSelecionada == null) {
+        System.out.println("Disciplina não encontrada.");
+        return;
+    }
+    ArrayList<String> preRequisitos = disciplinaSelecionada.getPréRequisitos();
+    boolean possuiTodosPreRequisitos = true;
+    for (String pre : preRequisitos) {
+        if (!disciplinasFeitas.contains(pre)) {
+            possuiTodosPreRequisitos = false;
+            break;
+        }
+    }
+    if (!possuiTodosPreRequisitos) {
+        System.out.println("Você não possui todos os pré-requisitos para essa disciplina.");
+        return;
+    }
+    if (turmasMatriculadas.contains(nomeDisciplina)) {
+        System.out.println("Você já está matriculado nessa disciplina.");
+        return;
+    }
+    if (turmasMatriculadas.size() >= 6) {
+        System.out.println("Limite máximo de 6 disciplinas já atingido.");
+        return;
+    }
+    if (disciplinasFeitas.contains(nomeDisciplina)) {
+        System.out.println("Você já concluiu essa disciplina.");
+        return;
+    }
+    if (nomeDisciplina.isEmpty()) {
+        System.out.println("Nome da disciplina não pode ser vazio.");
+        return;
+    }
+    if (!nomeDisciplina.matches("[a-zA-Z0-9 ]+")) {
+        System.out.println("Nome da disciplina deve conter apenas letras, números e espaços.");
+        return;
+    }
+    ArrayList<Turma> turmasDisponiveis = disciplinaSelecionada.getTurmas();
+    if (turmasDisponiveis.isEmpty()) {
+        System.out.println("Não há turmas disponíveis para essa disciplina.");
+        return;
+    }
+    System.out.println("Turmas disponíveis para " + nomeDisciplina + ":");
+    for (Turma turma : turmasDisponiveis) {
+        System.out.println("Código: " + turma.getCodigo() + " | Horário: " + turma.getHorario() + 
+                           " | Vagas: " + (turma.getCapacidadeMaximaDeAlunos() - turma.getVagasOcupadas()));
+    }
+    System.out.print("Digite o código da turma que deseja se matricular: ");
+    String codigoTurma = scanner.nextLine();
+    boolean turmaEncontrada = false;
+    for (Turma turma : turmasDisponiveis) {
+        if (turma.getCodigo().equalsIgnoreCase(codigoTurma)) {
+            turmaEncontrada = true;
+            if (turma.getCapacidadeMaximaDeAlunos() > turma.getVagasOcupadas()) {
+                turmasMatriculadas.add(nomeDisciplina);
+                turma.setVagasOcupadas(turma.getVagasOcupadas() + 1);
+                System.out.println("Matrícula em " + nomeDisciplina + " realizada com sucesso na turma " + codigoTurma + ".");
+            } else {
+                System.out.println("Não há vagas disponíveis nessa turma.");
+            }
+            break;
+        }
+    }
+    if (!turmaEncontrada) {
+        System.out.println("Turma não encontrada. Tente novamente.");
+    }
+}
+
     public void trancarMatrícula(){
         System.out.print("Trancar matrícula em:");
         String nomeDisciplina = scanner.nextLine();
