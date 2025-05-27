@@ -19,7 +19,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   CLonar o repositóriona IDE como comando: git clone https://github.com/LucasPeixotoRodrigues/ep1-OO-2025_1_LucasPeixoto.git
+   Clonar o repositóriona IDE como comando: git clone https://github.com/LucasPeixotoRodrigues/ep1-OO-2025_1_LucasPeixoto.git
 
 2. **Execução:**  
    Executar o Main.java no botão Run Java
@@ -55,13 +55,13 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+   https://drive.google.com/file/d/1koILLy7Td7mJWy7ANa6lN1tZBoTVLKcT/view?usp=drive_link
 
 2. Cadastro de Aluno:  
-   ![Inserir Print 2](caminho/do/print2.png)
+   https://drive.google.com/file/d/1HnjudQiCdBXcjJqAWEM59WVL1VRmX1Tr/view?usp=drive_link
 
-3. Relatório de Frequência/Notas:  
-   ![Inserir Print 3](caminho/do/print3.png)
+3. Cadastro de turma:  
+   https://drive.google.com/file/d/1txuqKQ_MqOHtUW0mUlXMHKuyEJGFfZEj/view?usp=drive_link
 
 ---
 
