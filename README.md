@@ -42,13 +42,14 @@ O enunciado do trabalho pode ser encontrado aqui:
 └── README.md
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+
+   Foi utilizada a versão 21.0.7 do Java.
 
 ---
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+- [https://drive.google.com/file/d/12XmmIwySuEpP5aGonuKrZTw8f9pecEe3/view?usp=drive_link]
 
 ---
 
@@ -72,8 +73,6 @@ O enunciado do trabalho pode ser encontrado aqui:
 - [ ] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
 - [ ] Lançamento de notas e controle de presença
 - [ ] Cálculo de média final e verificação de aprovação/reprovação
-- [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
-- [ ] Persistência de dados em arquivos (.txt ou .csv)
 - [ ] Tratamento de duplicidade de matrículas
 - [ ] Uso de herança, polimorfismo e encapsulamento
 
@@ -81,10 +80,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- Tive dificuldade de relacionar algumas classes de forma efetiva, o que acabou dificultando bastante na criação de determinados métodos. Houve também dificuldade de implementação efetiva dos métodos, o que acredito que possa estar relacionado ao desafio de relacionamento das classes. Aviso: não consegui armazenar os dados em arquivos e, também, não consegui finalizar o ModoAvaliação, além disso, os métodos de fazerMatricula e listarTurmas estão dando erro. O de fazerMatricula estádando erro há muito tempo e, quando o conserto, outro erro nesse mesmo método ocorre; enquanto isso, o método de listarTurmas estava funcionando perfeitamente, mas deixou de o fazer após algumas alterações no modoDisciplina e nas classes relacionadas, o que não consegui converter. 
+- Tive dificuldade de relacionar algumas classes de forma efetiva, o que acabou dificultando bastante na criação de determinados métodos. Houve também dificuldade de implementação efetiva dos métodos, o que acredito que possa estar relacionado ao desafio de relacionamento das classes. Aviso: não consegui armazenar os dados em arquivos e, também, não consegui finalizar o ModoAvaliação, além disso, os métodos de fazerMatricula e listarTurmas estão dando erro. O de fazerMatricula estádando erro há muito tempo e, quando o conserto, outro erro nesse mesmo método ocorre; enquanto isso, o método de listarTurmas estava funcionando perfeitamente, mas deixou de o fazer após algumas alterações no modoDisciplina e nas classes relacionadas, o que não consegui converter. OBS sobre o vídeo: perdão pela qualidade do áudio e pelas vezes que tossi.
 
 ---
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- [lucaspeixotorodrigues@gmail.com]

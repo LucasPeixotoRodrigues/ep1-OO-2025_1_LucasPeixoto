@@ -28,7 +28,7 @@ public class Aluno {
     public ArrayList<String> getTurmasMatriculadas() {
         return turmasMatriculadas;
     }
-
+    
     public ArrayList<Disciplina> getDisciplinasFeitas() {
         return disciplinasFeitas;
     }

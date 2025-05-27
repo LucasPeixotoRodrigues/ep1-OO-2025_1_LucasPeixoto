@@ -48,7 +48,6 @@ public class Main {
         scanner.close();
     }
 
-    // <<<<<<<<<<<<<<<< MENU ALUNO >>>>>>>>>>>>>>>>
     public static void menuAluno(Scanner Scanner) {
         boolean voltar = false;
         while (!voltar) {
@@ -93,7 +92,6 @@ public class Main {
         }
     }
 
-    // <<<<<<<<<<<<<<<< MENU DISCIPLINA/TURMA >>>>>>>>>>>>>>>>
     public static void menuDisciplinaTurma(Scanner scanner) {
         boolean voltar = false;
         while (!voltar) {
@@ -128,14 +126,12 @@ public class Main {
         }
     }
 
-    // <<<<<<<<<<<<<<<< MENU AVALIAÇÃO/FREQUÊNCIA >>>>>>>>>>>>>>>>
     public static void menuAvaliacaoFrequencia(Scanner scanner) {
         boolean voltar = false;
         while (!voltar) {
             System.out.println("\n--- MENU AVALIAÇÃO/FREQUÊNCIA ---");
             System.out.println("1 - Lançar Notas");
             System.out.println("2 - Lançar Frequência");
-            System.out.println("3 - Gerar Relatório de Avaliação");
             System.out.println("0 - Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
 
@@ -149,9 +145,6 @@ public class Main {
                 case "2":
                     System.out.println("Função de lançar frequência.");
                     modoAvaliacao.calcularFrequencia();
-                    break;
-                case "3":
-                    System.out.println("Função de gerar relatório.");
                     break;
                 case "0":
                     voltar = true;
