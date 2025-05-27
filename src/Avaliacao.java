@@ -29,10 +29,10 @@ public class Avaliacao {
         return seminário;
     }
 
-    public void médiaFinalA(){
+    public void mediaFinalA(){
         médiaFinal = (p1+p2+p3+listaDeExercícios+seminário)/5;
     }
-    public void médiaFinalB(){
+    public void mediaFinalB(){
         médiaFinal = (p1+p2*2+p3*3+listaDeExercícios+seminário)/8;
     }    
 }

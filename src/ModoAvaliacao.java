@@ -24,12 +24,12 @@ public class ModoAvaliacao {
     if (formaDeAvaliacao == 'a') {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setAvaliacao(p1, p2, p3, listaDeExercícios, seminário);
-        avaliacao.médiaFinalA();
+        avaliacao.mediaFinalA();
         System.out.println("Média final: " + avaliacao.médiaFinal);
     } else if (formaDeAvaliacao == 'b') {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setAvaliacao(p1, p2, p3, listaDeExercícios, seminário);
-        avaliacao.médiaFinalB();
+        avaliacao.mediaFinalB();
         System.out.println("Média final: " + avaliacao.médiaFinal);
     } else {
         System.out.println("Forma de avaliação inválida.");

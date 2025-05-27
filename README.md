@@ -19,10 +19,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+   CLonar o repositóriona IDE como comando: git clone https://github.com/LucasPeixotoRodrigues/ep1-OO-2025_1_LucasPeixoto.git
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   Executar o Main.java no botão Run Java
 
 3. **Estrutura de Pastas:**  
    [Descrever aqui as principais pastas do projeto]
@@ -67,7 +67,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+- Tive dificuldade de relacionar algumas classes de forma efetiva, o que acabou dificultando bastante na criação de determinados métodos. Aviso: não consegui armazenar os dados em arquivos e, também, não consegui finalizar o ModoAvaliação.
 
 ---
 

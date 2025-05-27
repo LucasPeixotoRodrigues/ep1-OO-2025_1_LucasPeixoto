@@ -33,8 +33,12 @@ public class ModoDisciplina {
                 preRequisitos.add(prereq.trim());
             }
         }
-        Disciplina novaDisciplina = new Disciplina();
-        novaDisciplina.setDisciplina(nome, codigo, cargaHoraria, preRequisitos, new ArrayList<>());
+        Disciplina novaDisciplina = new Disciplina(nome);
+        novaDisciplina.setCodigo(codigo);
+        novaDisciplina.setCargaHoraria(cargaHoraria);
+        for (String prereq : preRequisitos) {
+            novaDisciplina.adicionarPreRequisito(prereq);
+        }
         gerenciadorDeDisciplinas.adicionarDisciplina(novaDisciplina);
         System.out.println("Disciplina cadastrada com sucesso!");
         System.out.println("Nome: " + nome);
@@ -46,8 +50,8 @@ public class ModoDisciplina {
         listarDisciplinas();
 
         System.out.print("Digite o código da disciplina para cadastrar a turma: ");
-        String codigo = scanner.nextLine();
-        Disciplina disciplina = gerenciadorDeDisciplinas.buscarDisciplina(codigo);
+        String codigoDisciplina = scanner.nextLine();
+        Disciplina disciplina = gerenciadorDeDisciplinas.buscarDisciplina(codigoDisciplina);
 
         if (disciplina == null) {
             System.out.println("Disciplina não encontrada.");
@@ -76,15 +80,7 @@ public class ModoDisciplina {
             String horario = scanner.nextLine();
             System.out.print("Digite a capacidade máxima de alunos: ");
             int capacidadeMaximaDeAlunos = Integer.parseInt(scanner.nextLine());
-            Turma turma = new Turma(
-                professorResponsavel,
-                semestre,
-                formaDeAvaliacao,
-                presencial,
-                sala,
-                horario,
-                capacidadeMaximaDeAlunos
-            );
+            Turma turma = new Turma(codigoDisciplina, professorResponsavel, semestre, formaDeAvaliacao, presencial, sala, horario, capacidadeMaximaDeAlunos);
             disciplina.adicionarTurma(turma);
             System.out.println("Turma cadastrada com sucesso!");
             System.out.print("Deseja cadastrar outra turma? (s/n): ");
@@ -121,9 +117,9 @@ public class ModoDisciplina {
 }
 
     public void listarTurmas(Disciplina disciplina) {
-    System.out.println("Turmas da disciplina " + disciplina.getNomeDisciplina() + ":");
-    for (Turma turma : disciplina.getTurmas()) {
-        System.out.println(turma);
+        System.out.println("Turmas da disciplina " + disciplina.getNomeDisciplina() + ":");
+        for (Turma turma : disciplina.getTurmas()) {
+            System.out.println(turma);
+        }
     }
-}
 }

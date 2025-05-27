@@ -1,17 +1,18 @@
 
 
-public class Turma extends Disciplina{
+public class Turma{
+    private String codigoDisciplina;
+    private String professorResponsavel;
+    private String semestre;
+    private String formaDeAvaliacao;
+    private boolean presencial;
+    private String sala;
+    private String horario;
+    private int capacidadeMaximaDeAlunos;
+    private int vagasOcupadas;
 
-    protected String professorResponsavel;
-    protected String semestre;
-    protected String formaDeAvaliacao;
-    protected boolean presencial;
-    protected String sala;
-    protected String horario;
-    protected int capacidadeMaximaDeAlunos;
-    protected int vagasOcupadas;
-
-    public Turma(String professorResponsavel, String semestre, String formaDeAvaliacao, boolean presencial, String sala, String horario, int capacidadeMaximaDeAlunos){
+    public Turma(String codigoDisciplina, String professorResponsavel, String semestre, String formaDeAvaliacao, boolean presencial, String sala, String horario, int capacidadeMaximaDeAlunos){
+        this.codigoDisciplina = codigoDisciplina;
         this.professorResponsavel = professorResponsavel;
         this.semestre = semestre;
         this.formaDeAvaliacao = formaDeAvaliacao;
@@ -19,6 +20,9 @@ public class Turma extends Disciplina{
         this.sala = sala;
         this.horario = horario;
         this.capacidadeMaximaDeAlunos = capacidadeMaximaDeAlunos;
+    }
+    public String getCodigoDisciplina() {
+        return codigoDisciplina;
     }
     public String getProfessorResponsavel() {
         return professorResponsavel;
@@ -56,3 +60,4 @@ public class Turma extends Disciplina{
                " | Capacidade: " + capacidadeMaximaDeAlunos;
     }
 } 
+

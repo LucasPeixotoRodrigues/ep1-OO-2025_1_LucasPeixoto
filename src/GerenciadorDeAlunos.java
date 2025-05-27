@@ -7,11 +7,11 @@ public class GerenciadorDeAlunos {
         alunos.add(aluno);
     }
 
-    public void removerAluno(int matricula) {
+    public void removerAluno(String matricula) {
         alunos.removeIf(aluno -> aluno.getMatricula() == matricula);
     }
 
-    public Aluno buscarAluno(int matricula) {
+    public Aluno buscarAluno(String matricula) {
         for (Aluno aluno : alunos) {
             if (aluno.getMatricula() == matricula) {
                 return aluno;

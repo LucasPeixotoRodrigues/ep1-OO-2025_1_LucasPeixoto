@@ -1,43 +1,43 @@
 import java.util.ArrayList;
 
 public class Disciplina {
+    private String nomeDisciplina;
+    private String codigo;
+    private int cargaHoraria;
+    private ArrayList<String> preRequisitos = new ArrayList<>();
+    private ArrayList<Turma> turmas = new ArrayList<>();
 
-    protected String nomeDisciplina;
-    protected String codigo;
-    protected int cargaHoraria;
-    ArrayList<String> préRequisitos = new ArrayList<String>();
-    ArrayList<Turma> turmas = new ArrayList<>();
-
-    public void setDisciplina(String nomeDisciplina, String codigo, int cargaHoraria, ArrayList<String> préRequisitos, ArrayList<Turma> turmas) {
+    public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
-        this.codigo = codigo;
-        this.cargaHoraria = cargaHoraria;
-        this.préRequisitos = préRequisitos;
-        this.turmas = new ArrayList<>(); 
     }
-
-        public void adicionarTurma(Turma turma) {
-        turmas.add(turma);
+    public String getCodigo() {
+        return codigo;
     }
-
-        public String getNomeDisciplina() {
+    public String getNomeDisciplina() {
         return nomeDisciplina;
     }
-        public String getCodigo() {
-        return codigo;
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
     public int getCargaHoraria() {
         return cargaHoraria;
     }
-    public ArrayList<String> getPréRequisitos(){
-        return préRequisitos;
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+    public ArrayList<String> getPreRequisitos() {
+        return preRequisitos;
+    }
+    public void adicionarPreRequisito(String nomeDisciplina) {
+        preRequisitos.add(nomeDisciplina);
     }
     public ArrayList<Turma> getTurmas() {
         return turmas;
     }
-
-    @Override
-    public String toString() {
-        return "Disciplina: " + nomeDisciplina + " | Código: " + codigo + " | Carga Horária: " + cargaHoraria;
+    public void adicionarTurma(Turma turma) {
+        turmas.add(turma);
     }
 }

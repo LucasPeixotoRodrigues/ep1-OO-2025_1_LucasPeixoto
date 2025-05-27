@@ -6,9 +6,9 @@ public class Main {
     static ModoAluno modoAluno = new ModoAluno();
     static ModoDisciplina modoDisciplina = new ModoDisciplina(gerenciadorDeDisciplinas);
     static ModoAvaliacao modoAvaliacao = new ModoAvaliacao();
-    static Aluno aluno = new Aluno();
-    static AlunoEspecial alunoEspecial = new AlunoEspecial();
-    static Disciplina disciplina = new Disciplina();
+    static Aluno aluno = new Aluno("Aluno regular", "000000001", "Curso regular");
+    static AlunoEspecial alunoEspecial = new AlunoEspecial("Aluno especial", "000000002", "Curso especial");
+    static Disciplina disciplina = new Disciplina("Disciplina Padrão");
     static Avaliacao avaliacao = new Avaliacao();
     public static void main(String[] args) {
 
@@ -74,15 +74,15 @@ public class Main {
                     break;
                 case "3":
                     System.out.println("Função de matricular aluno em disciplina.");
-                    modoAluno.fazerMatricula(gerenciadorDeDisciplinas.listarDisciplinas());
+                    modoAluno.fazerMatricula(aluno, null);
                     break;
                 case "4":
                     System.out.println("Função de trancar disciplina.");
-                    modoAluno.trancarMatrícula();
+                    modoAluno.trancarMatricula(aluno);
                     break;
                 case "5":
                     System.out.println("Função de trancar semestre.");
-                    modoAluno.trancarSemestre();
+                    modoAluno.trancarSemestre(aluno);
                     break;
                 case "0":
                     voltar = true;

@@ -1,50 +1,45 @@
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AlunoEspecial extends Aluno {
-    protected ArrayList<String> turmasMatriculadas = new ArrayList<String>();
-    protected ArrayList<String> disciplinasFeitas = new ArrayList<String>();
+    Scanner scanner = new Scanner(System.in);
 
-    
-    public void setTurmasMatriculadas(ArrayList<String> turmasMatriculadas, ArrayList<String> disciplinasFeitas) {
-        this.turmasMatriculadas = turmasMatriculadas;
-        this.disciplinasFeitas = disciplinasFeitas;
+    public AlunoEspecial(String nome, String matricula, String cursoDeGraduacao) {
+        super(nome, matricula, cursoDeGraduacao);
     }
-    public ArrayList<String> getTurmasMatriculadas() {
-        return turmasMatriculadas;
-    }
-        public ArrayList<String> getDisciplinasFeitas() {
-        return disciplinasFeitas;
-    }
-    
-    public void fazerMatrícula(){
-        if (turmasMatriculadas.size() < 3) {
-            System.out.print("Fazer matrícula em:");
+
+    public void fazerMatricula() {
+        if (getTurmasMatriculadas().size() < 3) {
+            System.out.print("Fazer matrícula em: ");
             String nomeDisciplina = scanner.nextLine();
-            turmasMatriculadas.add(nomeDisciplina);
-            System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
-        } 
-        else {
-            System.out.println("Limite de disciplinas atingido");
+            getTurmasMatriculadas().add(nomeDisciplina);
+            System.out.printf("Matrícula em %s realizada com sucesso.\n", nomeDisciplina);
+        } else {
+            System.out.println("Limite de disciplinas atingido (máximo 3).");
         }
     }
-    public void trancarMatrícula(){
-        System.out.print("Trancar matrícula em:");
+
+    public void trancarMatricula() {
+        System.out.print("Trancar matrícula em: ");
         String nomeDisciplina = scanner.nextLine();
-        turmasMatriculadas.remove(nomeDisciplina);
-        System.out.format("Matrícula em %s realizada com sucesso", nomeDisciplina);
+        if (getTurmasMatriculadas().remove(nomeDisciplina)) {
+            System.out.printf("Matrícula em %s foi trancada com sucesso.\n", nomeDisciplina);
+        } else {
+            System.out.println("Você não está matriculado nessa disciplina.");
+        }
     }
-    public void trancarSemestre(){
-        System.out.print("Deseja trancar semestre? (s/n):");
+
+    public void trancarSemestre() {
+        System.out.print("Deseja trancar o semestre? (s/n): ");
         char resposta = scanner.next().charAt(0);
+        scanner.nextLine(); // consumir quebra de linha pendente
+
         if (resposta == 's' || resposta == 'S') {
-            turmasMatriculadas.clear();
-            System.out.println("Trancamento do semestre realizado com sucesso");
-        }
-        else if (resposta == 'n' || resposta == 'N') {
-            System.out.print("Trancamneto do semstre não realizado");
-        }
-        else {
-            System.out.print("Opção inválida");
+            getTurmasMatriculadas().clear();
+            System.out.println("Trancamento do semestre realizado com sucesso.");
+        } else if (resposta == 'n' || resposta == 'N') {
+            System.out.println("Trancamento do semestre não realizado.");
+        } else {
+            System.out.println("Opção inválida.");
         }
     }
 }
