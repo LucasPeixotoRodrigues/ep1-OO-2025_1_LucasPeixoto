@@ -135,8 +135,7 @@ public class Main {
             System.out.println("\n--- MENU AVALIAÇÃO/FREQUÊNCIA ---");
             System.out.println("1 - Lançar Notas");
             System.out.println("2 - Lançar Frequência");
-            System.out.println("3 - Gerar Relatórios");
-            System.out.println("4 - Emitir Boletim");
+            System.out.println("3 - Gerar Relatório de Avaliação");
             System.out.println("0 - Voltar ao Menu Principal");
             System.out.print("Escolha uma opção: ");
 
@@ -152,10 +151,7 @@ public class Main {
                     modoAvaliacao.calcularFrequencia();
                     break;
                 case "3":
-                    System.out.println("Função de gerar relatórios.");
-                    break;
-                case "4":
-                    System.out.println("Função de emitir boletim.");
+                    System.out.println("Função de gerar relatório.");
                     break;
                 case "0":
                     voltar = true;

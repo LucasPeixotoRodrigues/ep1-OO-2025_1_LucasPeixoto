@@ -25,7 +25,21 @@ O enunciado do trabalho pode ser encontrado aqui:
    Executar o Main.java no botão Run Java
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+   Projeto ep1
+├── src/
+│   ├── Aluno.java                         # Dados dos alunos; classe base;
+│   ├── AlunoEspecial.java                 # Herança - aluno especial;
+│   ├── Avaliacao.java                     # Dados da avaliação;
+│   ├── Disciplina.java                    # Dados da disciplina;
+│   ├── GerenciadorDeAlunos.java           # Gerencia a classe Aluno;
+│   ├── GerenciadorDeDisciplinas.java      # Gerencia a classe Disciplina;
+│   ├── Main.java                          # Classe principal, que rodará o código;
+│   ├── ModoAluno.java                     # Métodos do Aluno;
+│   ├── ModoAvaliacao.java                 # Métodos da Avaliação;
+│   ├── ModoDisciplina.java                # Métodos da disciplina;
+│   └── Turma.java                         # Dados da turma;
+│
+└── README.md
 
 3. **Versão do JAVA utilizada:**  
    [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
@@ -67,7 +81,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- Tive dificuldade de relacionar algumas classes de forma efetiva, o que acabou dificultando bastante na criação de determinados métodos. Aviso: não consegui armazenar os dados em arquivos e, também, não consegui finalizar o ModoAvaliação.
+- Tive dificuldade de relacionar algumas classes de forma efetiva, o que acabou dificultando bastante na criação de determinados métodos. Houve também dificuldade de implementação efetiva dos métodos, o que acredito que possa estar relacionado ao desafio de relacionamento das classes. Aviso: não consegui armazenar os dados em arquivos e, também, não consegui finalizar o ModoAvaliação, além disso, os métodos de fazerMatricula e listarTurmas estão dando erro. O de fazerMatricula estádando erro há muito tempo e, quando o conserto, outro erro nesse mesmo método ocorre; enquanto isso, o método de listarTurmas estava funcionando perfeitamente, mas deixou de o fazer após algumas alterações no modoDisciplina e nas classes relacionadas, o que não consegui converter. 
 
 ---
 

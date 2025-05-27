@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class ModoAvaliacao {
-
+    private float frequencia;
+    private Avaliacao avaliacao = new Avaliacao();
     Scanner scanner = new Scanner(System.in);
 
     public void lancarNota() {
@@ -22,12 +23,10 @@ public class ModoAvaliacao {
     
     
     if (formaDeAvaliacao == 'a') {
-        Avaliacao avaliacao = new Avaliacao();
         avaliacao.setAvaliacao(p1, p2, p3, listaDeExercícios, seminário);
         avaliacao.mediaFinalA();
         System.out.println("Média final: " + avaliacao.médiaFinal);
     } else if (formaDeAvaliacao == 'b') {
-        Avaliacao avaliacao = new Avaliacao();
         avaliacao.setAvaliacao(p1, p2, p3, listaDeExercícios, seminário);
         avaliacao.mediaFinalB();
         System.out.println("Média final: " + avaliacao.médiaFinal);
@@ -42,13 +41,24 @@ public class ModoAvaliacao {
         System.out.println("Digite a quantidade de faltas:");
         int faltas = scanner.nextInt();
         scanner.nextLine();
-        float frequencia = ((totalAulas - faltas) / (float) totalAulas) * 100;
+        frequencia = ((totalAulas - faltas) / (float) totalAulas) * 100;
         System.out.println("Frequência: " + frequencia + "%");
         if (frequencia >= 75) {
             System.out.println("Aprovação por frequência.");
         } else {
             System.out.println("Reprovação por frequência.");
         }
+    }
+    public void gerarRelatorio() {
+        System.out.println("Gerando relatório...");
+        if (frequencia >= 75 && avaliacao.médiaFinal >= 5) {
+            System.out.println("Aprovação por frequência e média.");
+        } else if (frequencia < 75) {
+            System.out.println("Reprovação por frequência.");
+        } else {
+            System.out.println("Reprovação por média.");
+        }
+        System.out.println("Relatório gerado com sucesso.");
     }
 
 }

@@ -37,18 +37,18 @@ public class ModoAluno {
         if (!input.trim().isEmpty()) {
             String[] disciplinas = input.split(",");
             for (String nomeDisciplina : disciplinas) {
-                Disciplina d = new Disciplina(nomeDisciplina.trim());
-                aluno.adicionarDisciplinaFeita(d);
+                Disciplina disciplina = new Disciplina(nomeDisciplina.trim());
+                aluno.adicionarDisciplinaFeita(disciplina);
             }
         }
-
-        listaDeAlunos.add(aluno);
+        
         System.out.println("Aluno cadastrado com sucesso!");
         System.out.println("Nome: " + aluno.getNome());
         System.out.println("Matrícula: " + aluno.getMatricula());
         System.out.println("Curso: " + aluno.getCursoDeGraduacao());
         System.out.println("Disciplinas feitas: " + aluno.getDisciplinasFeitas());
         System.out.println("Turmas matriculadas: " + aluno.getTurmasMatriculadas());
+        listaDeAlunos.add(aluno);
     }
 
     public void listarAlunos() {
@@ -68,12 +68,12 @@ public class ModoAluno {
     }
 
     public void fazerMatricula(Aluno aluno, ArrayList<Disciplina> disciplinas) {
-        System.out.print("\nDigite o nome da disciplina para matrícula: ");
-        String nomeDisciplina = scanner.nextLine();
+        System.out.print("\nDigite o código da disciplina para matrícula: ");
+        String codigoDisciplina = scanner.nextLine();
 
         Disciplina disciplinaSelecionada = null;
         for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getNomeDisciplina().equalsIgnoreCase(nomeDisciplina)) {
+            if (disciplina.getCodigo().equalsIgnoreCase(codigoDisciplina)) {
                 disciplinaSelecionada = disciplina;
                 break;
             }
@@ -90,7 +90,7 @@ public class ModoAluno {
         for (String pre : preRequisitos) {
             boolean encontrou = false;
             for (Disciplina feita : aluno.getDisciplinasFeitas()) {
-                if (pre.trim().equalsIgnoreCase(feita.getNomeDisciplina().trim())) {
+                if (pre.trim().equalsIgnoreCase(feita.getCodigo().trim())) {
                     encontrou = true;
                     break;
                 }
@@ -106,7 +106,7 @@ public class ModoAluno {
             return;
         }
 
-        if (aluno.getTurmasMatriculadas().contains(nomeDisciplina)) {
+        if (aluno.getTurmasMatriculadas().contains(disciplinaSelecionada.getNomeDisciplina())) {
             System.out.println("Você já está matriculado nessa disciplina.");
             return;
         }
@@ -124,7 +124,7 @@ public class ModoAluno {
 
         System.out.println("\nTurmas disponíveis:");
         for (Turma turma : turmasDisponiveis) {
-            System.out.println("- Código: " + turma.getCodigoDisciplina() +
+            System.out.println("- Professor: " + turma.getProfessorResponsavel() +
                                " | Horário: " + turma.getHorario() +
                                " | Vagas: " + (turma.getCapacidadeMaximaDeAlunos() - turma.getVagasOcupadas()));
         }
@@ -137,7 +137,7 @@ public class ModoAluno {
             if (turma.getCodigoDisciplina().equalsIgnoreCase(codigoTurma)) {
                 turmaEncontrada = true;
                 if (turma.getVagasOcupadas() < turma.getCapacidadeMaximaDeAlunos()) {
-                    aluno.adicionarTurma(nomeDisciplina);
+                    aluno.adicionarTurma(codigoDisciplina);
                     turma.setVagasOcupadas(turma.getVagasOcupadas() + 1);
                     System.out.println("Matrícula realizada com sucesso.");
                 } else {

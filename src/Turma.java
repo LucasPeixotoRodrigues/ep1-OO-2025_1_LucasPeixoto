@@ -1,6 +1,7 @@
 
 
 public class Turma{
+    
     private String codigoDisciplina;
     private String professorResponsavel;
     private String semestre;
@@ -33,7 +34,7 @@ public class Turma{
     public String getFormaDeAvaliacao() {
         return formaDeAvaliacao;
     }
-    public boolean ispresencial() {
+    public boolean presencial() {
         return presencial;
     }
     public String getSala() {
