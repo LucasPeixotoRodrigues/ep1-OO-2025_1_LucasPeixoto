@@ -25,6 +25,7 @@ O enunciado do trabalho pode ser encontrado aqui:
    Executar o Main.java no botão Run Java
 
 3. **Estrutura de Pastas:**  
+```bash
    Projeto ep1
 ├── src/
 │   ├── Aluno.java                         # Dados dos alunos; classe base;
@@ -41,6 +42,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 │
 └── README.md
 
+```
 3. **Versão do JAVA utilizada:**  
 
    Foi utilizada a versão 21.0.7 do Java.
